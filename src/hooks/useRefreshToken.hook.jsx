@@ -9,6 +9,7 @@ const useRefreshToken = () => {
 
   const refresh = async () => {
     const response = await axiosPrivate.post(`${authApiUrl}/refreshToken`);
+    console.log("response", response);
     dispatch(
       setCredentials({
         accessToken: response?.data?.accessToken,
