@@ -4,7 +4,6 @@ import { Stack } from "@mui/material";
 import "./../../styles/sass/main.scss";
 
 const ResourceNotFound = ({ isError, error }) => {
-  console.log(error)
   return isError ? (
     <Stack spacing={1}>
       <p className="error-text"> Veri(ler) bulunamadı. </p>

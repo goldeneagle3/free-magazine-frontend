@@ -92,8 +92,8 @@ const SinglePostComp = ({ post, comments }) => {
       >
         <Avatar sx={{ width: 90, height: 90 }} />
         <Stack spacing={1}>
-          <h4 className="heading-tertiary">{post.username}</h4>
-          <Typography variant="h6">Spor</Typography>
+          <h4 className="heading-tertiary">{post?.username}</h4>
+          <Typography variant="h6">{post?.category}</Typography>
         </Stack>
       </Box>
 
