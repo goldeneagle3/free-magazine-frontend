@@ -33,7 +33,7 @@ export default function ExPostCard({ post }) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const text2 = post?.content?.substring(0, 400).toString();
+  const text2 = post?.content?.substring(0, 300).toString();
   let text;
   if (typeof text2 === "string") {
     text = parseHtmlText(text2);
