@@ -35,18 +35,18 @@ const ApplicationRoute = () => {
   return (
     <ScrollToTop>
       <Routes>
-        <Route path="/">
-          <Route index element={<Landing />} />
+        <Route element={<PersistLogin />}>
+          <Route path="/">
+            <Route index element={<Landing />} />
 
-          <Route
-            path="auth"
-            element={
-              <RequireNoAuth accessToken={accessToken}>
-                <Auth />
-              </RequireNoAuth>
-            }
-          />
-          <Route element={<PersistLogin />}>
+            <Route
+              path="auth"
+              element={
+                <RequireNoAuth accessToken={accessToken}>
+                  <Auth />
+                </RequireNoAuth>
+              }
+            />
             <Route path="/home" element={<MainPage />} />
             <Route path="construction" element={<Construction />} />
             <Route path="/posts">
