@@ -1,0 +1,34 @@
+.p-padding {
+  padding: 3rem;
+
+  @include respond(tab-port){
+    padding: 2rem;
+  }
+  @include respond(phone){
+    padding: 1rem 2rem;
+  }
+
+  &-bottom-small {
+    padding-bottom: 1rem;
+  }
+
+  &-bottom-medium {
+    padding-bottom: 2rem;
+  }
+
+  &-bottom-big {
+    padding-bottom: 3rem;
+  }
+
+  &-top-small {
+    padding-top: 1rem;
+  }
+
+  &-top-medium {
+    padding-top: 2rem;
+  }
+
+  &-top-big {
+    padding-top: 3rem;
+  }
+}

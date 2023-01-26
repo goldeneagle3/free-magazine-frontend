@@ -1,0 +1,13 @@
+.carousel {
+  &__body {
+    &__title {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      padding: 1rem;
+      border-radius: 9px;
+      background-color: rgba(0, 0, 0, 0.675);
+      color: whitesmoke;
+    }
+  }
+}

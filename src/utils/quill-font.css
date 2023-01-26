@@ -1,0 +1,23 @@
+
+/* Set dropdown font-families */
+#toolbar .ql-font span[data-label="arial"]::before {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#toolbar .ql-font span[data-label="Poppins"]::before {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#toolbar .ql-font span[data-label="Raleway"]::before {
+  font-family: "Raleway";
+}
+
+/* Set content font-families */
+.ql-font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ql-font-poppins {
+  font-family: 'Montserrat', sans-serif;
+}
+.ql-font-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+/* We do not set Aref Ruqaa since it is the default font */

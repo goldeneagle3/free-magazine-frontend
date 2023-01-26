@@ -1,0 +1,59 @@
+.third__post {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 16%,
+    transparent 80%,
+    $color-grey-light-3 100%
+  );
+  &:hover {
+    animation: gradient 15s ease infinite;
+    background: linear-gradient(
+      90deg,
+      $color-grey-light-3 0%,
+      transparent 16%,
+      transparent 80%,
+      transparent 100%
+    );
+  }
+
+  &--1 {
+    background-color: rgb(184, 8, 8);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main__post {
+  animation: bg-animation 25s infinite;
+  &:hover {
+    .left__process {
+      color: #089949;
+    }
+
+    .right__process {
+      color: #089949;
+    }
+  }
+}
+
+.read-more-ex-post {
+  // margin-right: 2rem;
+  &:hover {
+    border-bottom: 1px solid gray ;
+    border-bottom-width: 2px;
+  }
+}

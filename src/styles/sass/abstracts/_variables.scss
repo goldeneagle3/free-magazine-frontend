@@ -1,0 +1,70 @@
+// CSS VARIABLES
+:root {
+  --color-primary: #176ab8;
+  --color-primary-light: #6a98c4;
+  --color-primary-dark: #073b6b;
+
+  --color-secondary: #ce2e56;
+  --color-secondary-light: #cf6a83;
+  --color-secondary-dark: #840b29;
+
+  --color-tertiary: #4cc009;
+  --color-tertiary-light: #acec87;
+  --color-tertiary-dark: #0a5a15;
+
+  --color-grey-light-1: #fff9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.4);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --line: 1px solid var(--color-grey-light-2);
+}
+
+$color-primary: #176ab8;
+$color-primary-light: #6a98c4;
+$color-primary-dark: #073b6b;
+
+$color-secondary: #ce2e56;
+$color-secondary-light: #cf6a83;
+$color-secondary-dark: #840b29;
+
+$color-tertiary: #4cc009;
+$color-tertiary-light: #acec87;
+$color-tertiary-dark: #0a5a15;
+
+$color-grey-light-1: #fffcfc;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #333;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: #999;
+
+$shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.4);
+$shadow-light: 0 2rem 2rem rgba(27, 26, 26, 0.06);
+
+$line: 1px solid var(--color-grey-light-2);
+
+$landing-bg-image-color-1: rgb(150, 150, 230);
+$landing-bg-image-color-2: rgb(29, 29, 184);
+
+$composition-image-color-1: rgb(81, 235, 240);
+$composition-image-color-2: rgb(28, 167, 191);
+$composition-image-color-3: rgb(68, 126, 180);
+
+$bp-largest: 75em; //1200px
+$bp-large: 68.75em; //1100px
+$bp-medium: 56.25em; //900px
+$bp-small: 37.5em; //600px
+$bp-smallest: 31.25em; //500px
+
+// FONT
+$default-font-size: 1.6rem;

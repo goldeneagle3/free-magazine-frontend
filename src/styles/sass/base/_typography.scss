@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anybody:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unna:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-primary-1);
+}
+
+.heading-primary {
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    font-family: "Unna", serif;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 3.7rem;
+    }
+  }
+
+  &--sub {
+    font-family: "Outfit", sans-serif;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+    }
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(
+    to left,
+    var(--color-grey-dark-2),
+    var(--color-grey-dark-1)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s;
+  font-family: "Poppins", Arial, sans-serif;
+
+  &:hover {
+    transform: skewY(1deg) skewX(5deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(var(--color-grey-dark-1), 0.2);
+  }
+
+  @include respond(tab-port) {
+    font-size: 2.7rem;
+  }
+  @include respond(phone) {
+    font-size: 2.3rem;
+    &:hover {
+      transform: skewY(-2deg) skewX(1deg) scale(1.02);
+      text-shadow: 0.5rem 1rem 2rem rgba(var(--color-grey-dark-1), 0.2);
+    }
+  }
+
+  &--profile {
+    font-size: 3rem;
+    font-family: "Anybody", cursive;
+
+    @include respond(tab-port) {
+      font-size: 2.7rem;
+    }
+    @include respond(phone) {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-family: "Open Sans", sans-serif;
+
+  @include respond(tab-port) {
+    font-size: 1.4rem;
+  }
+}
+
+.paragraph {
+  font-size: $default-font-size;
+  text-align: left;
+  color: $color-grey-dark-1;
+  font-family: "Montserrat", sans-serif;
+  line-break: anywhere;
+  flex-wrap: wrap;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+  &--min {
+    text-align: left;
+    font-size: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+    line-break: anywhere;
+    flex-wrap: wrap;
+  }
+
+  &--parsed {
+    font-size: $default-font-size;
+    max-width: fit-content;
+    justify-content: center;
+    width: fit-content;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    word-break: break-all;
+    line-break: anywhere;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.list-header {
+  font-family: "Lora", serif;
+  font-size: 2.4rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.side-list-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  color: $color-grey-dark-2;
+  font-family: "Poppins", sans-serif;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+  &:hover {
+    color: $color-primary-dark;
+    cursor: pointer;
+    border-bottom: 2px solid rgb(177, 171, 171);
+  }
+}
+
+.list-text {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: $color-primary-dark;
+}
+
+.stats-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+
+  @include respond(tab-port) {
+    font-size: 0.9rem;
+  }
+}
+
+.error-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  color: rgb(173, 13, 13);
+
+  @include respond(tab-port) {
+    font-size: 0.9rem;
+  }
+}

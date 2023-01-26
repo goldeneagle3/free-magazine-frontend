@@ -1,0 +1,215 @@
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 45rem;
+  // max-width: 122rem;
+
+  // FUNCTIONALITY
+  &__side {
+    height: 45rem;
+    transition: all 0.9s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+
+    &--front {
+      background-color: white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(to right bottom, wheat, grey);
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-dark,
+          $color-primary-light
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  // FRONT SIZE STYLING
+  &__picture {
+    background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // width: 100%;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+
+    @include respond(phone){
+      height: 35rem;
+    }
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          rgb(138, 151, 138),
+          grey
+        ),
+        url("../../../assets/img/soc.jpg");
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          pink,
+          rgb(137, 96, 137)
+        ),
+        url("../../../assets/img/manzara.jpg");
+    }
+
+    &--3 {
+      background-image: linear-gradient(to right bottom, blue, blue),
+        url("../../../assets/img/manzara.jpg");
+    }
+  }
+
+  &__heading {
+    font-size: 1.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: white;
+    position: absolute;
+    top: 17rem;
+    right: 2rem;
+    width: 55%;
+
+    @include respond(phone){
+      top: 29rem;
+    }
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-dark, 0.85),
+        rgba($color-primary-light, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid rgb(204, 194, 194);
+        }
+      }
+    }
+  }
+
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+
+    @include respond(phone) {
+      margin-top: 2rem;
+    }
+  }
+
+  &__price-box {
+    color: white;
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    height: auto;
+    border-radius: 0;
+    background-color: white;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+
+    // FUNCTIONALITY
+    &__side {
+      height: auto;
+      transition: all 0.9s ease;
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+
+        -webkit-clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 1rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
+}
