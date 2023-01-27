@@ -30,6 +30,7 @@ import {
   isEditor,
 } from "../../validation/conditions/checkRole";
 import useLogout from "../../hooks/useLogout.hook";
+import { stringAvatar } from "../../utils/CustomProfileImage";
 
 const pages = [
   { id: 0, pageName: "/posts", navName: "Tüm Yazıları Gör" },
@@ -152,7 +153,10 @@ const DesktopNavbar = () => {
                   sx={{ gap: 2 }}
                   onClick={handleOpenUserMenu}
                 >
-                  <Avatar alt="Remy Sharp" src={imageUrl} />
+                  <Avatar
+                    {...stringAvatar(username.toUpperCase())}
+                    src={imageUrl}
+                  />
                   <Typography sx={{ color: "wheat" }}>{username}</Typography>
                 </Button>
               </Tooltip>

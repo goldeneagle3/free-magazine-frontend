@@ -39,6 +39,7 @@ import {
 import useLogout from "../../hooks/useLogout.hook";
 import { BRAND } from "../../config/constants";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
+import { stringAvatar } from "../../utils/CustomProfileImage";
 
 const drawerWidth = 200;
 
@@ -183,6 +184,7 @@ export default function Navbar(props) {
             <ListItemAvatar>
               <Avatar
                 src={`${BASE_URL}${photosApiUrl}/${authUserImage}`}
+                {...stringAvatar(authUser.toUpperCase())}
               />
             </ListItemAvatar>
             <ListItemText primary={authUser} />
