@@ -77,24 +77,8 @@ const DesktopNavbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Avatar src={Logo} sx={{ maxWidth: "100%", height: "auto" }} />
-          <Link to="/home" style={{ color: "inherit" }}>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              sx={{
-                ml: 2,
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              {BRAND}
-            </Typography>
+          <Link to="/home" style={{ marginLeft: "1rem", color: "inherit" }}>
+            <h3 className="list-header">{BRAND}</h3>
           </Link>
           <Box sx={{ flexGrow: 1, display: "flex", mx: 3 }}>
             {pages.map((page) => (

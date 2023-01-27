@@ -84,7 +84,7 @@ const MainPage = () => {
                     justifyContent: "center",
                   }}
                 />
-                <h4 className="heading-secondary">{BRAND}</h4>
+                <h3 className="list-header">{BRAND}</h3>
               </Stack>
               <p className="paragraph--min p-padding">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas

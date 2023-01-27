@@ -50,7 +50,7 @@ const FormLayout = ({ children, text }) => {
             justifyContent: "center",
           }}
         />
-        <h4 className="heading-secondary">{BRAND}</h4>
+        <h3 className="list-header">{BRAND}</h3>
       </Grid>
     </Grid>
   );
