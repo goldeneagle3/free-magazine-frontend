@@ -13,7 +13,7 @@ export default function PlainPostCard({ post }) {
     <Card
       sx={{
         maxWidth: 345,
-        bgcolor: "transparent",
+        bgcolor: "white",
         border: "none",
         boxShadow: "none",
       }}
@@ -22,15 +22,22 @@ export default function PlainPostCard({ post }) {
       <CardContent>
         <Typography
           gutterBottom
-          variant="h5"
+          // variant="h5"
           component="div"
           textAlign="left"
-          fontWeight={800}
-          sx={{ pb: 1 }}
+          fontWeight={700}
+          sx={{ pb: 1, fontSize: 13 }}
         >
-          {post?.title}
+          {post?.title?.length > 30
+            ? post?.title?.substring(0, 30) + "..."
+            : post?.title}
         </Typography>
-        <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="center">
+        <Stack
+          direction="row"
+          spacing={2}
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Typography variant="body1" color="text.secondary" gutterBottom>
             {post?.username}
           </Typography>
