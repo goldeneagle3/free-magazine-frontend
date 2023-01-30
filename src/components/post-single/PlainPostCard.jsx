@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 import { Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function PlainPostCard({ post }) {
   const postImage = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
@@ -18,7 +19,9 @@ export default function PlainPostCard({ post }) {
         boxShadow: "none",
       }}
     >
-      <CardMedia sx={{ height: 140 }} image={postImage} title="Post Media" />
+      <Link to={`/posts/${post?.id}`}>
+        <CardMedia sx={{ height: 140 }} image={postImage} title="Post Media" />
+      </Link>
       <CardContent>
         <Typography
           gutterBottom
