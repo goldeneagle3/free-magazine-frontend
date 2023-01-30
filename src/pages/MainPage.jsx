@@ -120,7 +120,7 @@ const MainPage = () => {
             {/* <PostsList /> */}
             <Grid
               container
-              spacing={1}
+              spacing={4}
               sx={{
                 display: "flex",
                 alignItems: "center",

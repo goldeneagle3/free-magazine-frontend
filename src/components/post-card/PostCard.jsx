@@ -2,7 +2,7 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { MdCalendarToday, MdModeComment } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { BiCategory } from "react-icons/bi";
@@ -15,6 +15,8 @@ import LikeComp from "../like/LikeComp";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 export default function PostCard({ post }) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
   const postImage = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
 
   const infos = {
@@ -44,7 +46,7 @@ export default function PostCard({ post }) {
             src={postImage}
             alt="post media"
             style={{
-              height: "200px",
+              height: matches ? "280px" : "200px",
               maxWidth: 500,
               width: "100%",
             }}
