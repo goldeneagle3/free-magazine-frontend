@@ -11,7 +11,6 @@ import {
   useGetAuthorByQuery,
   useUpdateUserMutation,
 } from "../../features/user/usersSlice";
-import { validateDescriptionLength } from "../../validation/methods/length.method.validation";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 import { selectCurrentUsername } from "../../features/auth/authSlice";
 
@@ -47,9 +46,6 @@ const EditUserComp = ({ username }) => {
     e.preventDefault();
 
     const { firstName, lastName, description, image, imageProtect } = values;
-    if (!validateDescriptionLength(description)) {
-      return;
-    }
 
     let newUser = new FormData();
 
