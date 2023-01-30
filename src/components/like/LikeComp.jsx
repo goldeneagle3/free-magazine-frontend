@@ -49,13 +49,13 @@ const LikeComp = ({ postId, likes }) => {
       }}
     >
       <IconButton
-        sx={{ width: 30, height: 30 }}
+        sx={{ width: 27, height: 27 }}
         onClick={submitLikeFn}
         disabled={isLoading}
       >
         {like ? <AiFillLike /> : <AiOutlineLike />}
       </IconButton>
-      <Typography sx={{ fontSize: 13 }}>{counts}</Typography>
+      <Typography sx={{ fontSize: 11 }}>{counts}</Typography>
       <SnackbarMUI open={open} setOpen={setOpen} text={text} />
     </Box>
   );

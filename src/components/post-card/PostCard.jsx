@@ -71,7 +71,7 @@ export default function PostCard({ post }) {
             <IconButton sx={{ width: 27, height: 27 }}>
               <MdCalendarToday />
             </IconButton>
-            <Typography sx={{ fontSize: 10 }}>
+            <Typography sx={{ fontSize: 11 }}>
               {moment(post?.createDateTime).fromNow()}
             </Typography>
           </h4>
@@ -79,14 +79,14 @@ export default function PostCard({ post }) {
             <IconButton sx={{ width: 27, height: 27 }}>
               <BiCategory />
             </IconButton>
-            <Typography sx={{ fontSize: 10 }}>{post?.category}</Typography>
+            <Typography sx={{ fontSize: 11 }}>{post?.category}</Typography>
           </h4>
           <LikeComp postId={post?.id} likes={post?.likes} />
           <h4 className="header-tertiary" style={infos}>
             <IconButton sx={{ width: 27, height: 27 }}>
               <MdModeComment />
             </IconButton>
-            <Typography sx={{ fontSize: 10 }}>{post?.comments}</Typography>
+            <Typography sx={{ fontSize: 11 }}>{post?.comments}</Typography>
           </h4>
         </Box>
         <Link to={`/users/${post?.username}`}>
