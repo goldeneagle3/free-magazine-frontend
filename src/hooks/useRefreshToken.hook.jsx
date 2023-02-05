@@ -9,7 +9,6 @@ const useRefreshToken = () => {
 
   const refresh = async () => {
     const response = await refreshToken();
-    console.log(response);
     if (response?.data) {
       dispatch(
         setCredentials({
@@ -21,7 +20,7 @@ const useRefreshToken = () => {
         })
       );
     } else {
-      console.log("Laannnnnnnnnn");
+      console.log("error");
     }
     return response?.data?.accessToken;
   };
