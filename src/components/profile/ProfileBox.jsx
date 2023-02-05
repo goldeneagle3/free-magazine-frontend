@@ -6,7 +6,6 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const ProfileBox = ({ user }) => {
   const imageUrl = `${BASE_URL}${photosApiUrl}/${user?.imageId}`;
-
   return (
     <div className="profile">
       <div className="profile__box">
@@ -15,12 +14,12 @@ const ProfileBox = ({ user }) => {
             src={imageUrl}
             sx={{
               width: {
-                xs: 45,
+                xs: 60,
                 md: 70,
                 lg: 120,
               },
               height: {
-                xs: 45,
+                xs: 60,
                 md: 70,
                 lg: 120,
               },
@@ -30,7 +29,9 @@ const ProfileBox = ({ user }) => {
             <h3 className="heading-secondary--profile">{user?.username}</h3>
             {(user?.firstName || user?.lastName) && (
               <h5 className="heading-tertiary">
-                {user?.firstName + " " + user?.lastName} / Yazar
+                {user.username &&
+                  user?.firstName + " " + user?.lastName + " / "}
+                Yazar
               </h5>
             )}
           </Box>

@@ -50,11 +50,6 @@ const MainLayout = ({ children }) => {
                 mt: { md: 1, lg: 5 },
               }}
             >
-              {/* {user ? (
-                <ProfileBar user={user} image={image} imageExist={imageExist} />
-              ) : (
-                <AuthBar />
-              )} */}
               <RightSide />
             </Grid>
           </Grid>

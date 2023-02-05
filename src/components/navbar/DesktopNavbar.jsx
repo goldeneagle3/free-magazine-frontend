@@ -31,6 +31,7 @@ import {
 } from "../../validation/conditions/checkRole";
 import useLogout from "../../hooks/useLogout.hook";
 import { stringAvatar } from "../../utils/CustomProfileImage";
+import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
 
 const pages = [
   { id: 0, pageName: "/posts", navName: "Tüm Yazıları Gör" },
@@ -46,6 +47,10 @@ const DesktopNavbar = () => {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const signOut = useLogout();
+  const { data: categories } = useGetCategoriesQuery();
+
+  const items = categories && [...categories];
+  items?.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
 
   const imageUrl = `${BASE_URL}${photosApiUrl}/${image}`;
 
@@ -73,8 +78,13 @@ const DesktopNavbar = () => {
   }
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
+    <AppBar position="static" sx={{ boxShadow: "none", mb: 2 }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          background: "linear-gradient(to right bottom, #6a98c4, #073b6b)",
+        }}
+      >
         <Toolbar disableGutters>
           <Avatar src={Logo} sx={{ maxWidth: "100%", height: "auto" }} />
           <Link to="/home" style={{ marginLeft: "1rem", color: "inherit" }}>
@@ -91,7 +101,8 @@ const DesktopNavbar = () => {
                   fontSize: "1.1rem",
                   fontWeight: "900",
                   my: 2,
-                  color: "#d6d5e1",
+                  color: "#f0eeee",
+                  fontSizeAdjust: "inherit",
                   display: "block",
                   ":hover": {
                     bgcolor: "#9b1c46",
@@ -118,16 +129,16 @@ const DesktopNavbar = () => {
               sx={{ mt: 1, mx: 3 }}
             >
               <a href="https://www.facebook.com">
-                <BsFacebook size={20} color="#0e055c" />
+                <BsFacebook size={20} color="#f0eeee" />
               </a>
               <a href="https://www.instagram.com">
-                <AiFillInstagram size={20} color="#0e055c" />
+                <AiFillInstagram size={20} color="#f0eeee" />
               </a>
               <a href="https://twitter.com">
-                <BsTwitter size={20} color="#0e055c" />
+                <BsTwitter size={20} color="#f0eeee" />
               </a>
               <a href="https://youtube.com">
-                <BsYoutube size={20} color="#0e055c" />
+                <BsYoutube size={20} color="#f0eeee" />
               </a>
             </Stack>
             {username ? (
@@ -141,7 +152,7 @@ const DesktopNavbar = () => {
                     {...stringAvatar(username.toUpperCase())}
                     src={imageUrl}
                   />
-                  <Typography sx={{ color: "wheat" }}>{username}</Typography>
+                  <Typography sx={{ color: "#f0eeee" }}>{username}</Typography>
                 </Button>
               </Tooltip>
             ) : (
@@ -238,6 +249,42 @@ const DesktopNavbar = () => {
                 </MenuItem>
               </Menu>
             )}
+          </Box>
+        </Toolbar>
+        <Toolbar disableGutters>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              mx: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {items?.map((category) => (
+              <Button
+                key={category?.id}
+                onClick={() => navigate(`/posts/category/${category?.name}`)}
+                sx={{
+                  mx: { md: 1, lg: 2 },
+                  my: 1,
+                  px: 1,
+                  fontSize: "1.1rem",
+                  fontWeight: "900",
+                  color: "#dadcdf",
+                  display: "block",
+                  ":hover": {
+                    bgcolor: "#c5608236",
+                    borderBottom: "1px solid #9b1c46",
+                    borderRight: "2px solid #9b1c46",
+                  },
+                }}
+              >
+                {category?.name}
+              </Button>
+            ))}
           </Box>
         </Toolbar>
       </Container>

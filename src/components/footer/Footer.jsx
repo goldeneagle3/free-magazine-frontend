@@ -18,6 +18,7 @@ const Footer = () => {
           alt="Full logo"
           src={Logo}
         />
+        <h3 className="list-header">{BRAND}</h3>
       </div>
       <Container sx={{ margin: "auto" }}>
         <Grid container spacing={2} sx={{ p: 3 }}>
@@ -47,13 +48,27 @@ const Footer = () => {
               </ul>
               <Stack
                 spacing={1}
-                sx={{ mt: 2, ml: { xs: 3, md: 0 }, justifyContent: "flex-start" }}
+                sx={{
+                  mt: 2,
+                  ml: { xs: 3, md: 0 },
+                  justifyContent: "flex-start",
+                  color: "white",
+                  letterSpacing: 1,
+                }}
               >
-                <Stack direction="row" spacing={5} sx={{alignItems:'center'}} >
+                <Stack
+                  direction="row"
+                  spacing={5}
+                  sx={{ alignItems: "center" }}
+                >
                   <MdEmail />
                   <p>herbokolog96@gmail.com</p>
                 </Stack>
-                <Stack direction="row" spacing={5} sx={{alignItems:'center'}} >
+                <Stack
+                  direction="row"
+                  spacing={5}
+                  sx={{ alignItems: "center" }}
+                >
                   <MdPhone />
                   <p>212 000 00 00</p>
                 </Stack>
