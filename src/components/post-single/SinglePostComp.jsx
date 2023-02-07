@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import PostFooter from "./PostFooter";
@@ -17,12 +17,15 @@ import CommentsList from "../comment/CommentsList";
 import { selectCurrentUsername } from "../../features/auth/authSlice";
 import { useDeactivatePostMutation } from "../../features/posts/postSlice";
 import { parseHtmlText } from "../../utils/htmlParseConfig";
+import { BASE_URL, photosApiUrl } from "../../config/urls";
+import { stringAvatar } from "../../utils/CustomProfileImage";
 
 const SinglePostComp = ({ post, comments }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const username = useSelector(selectCurrentUsername);
   const [deletePost, { isLoading }] = useDeactivatePostMutation();
+  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.profileImageId}`;
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -90,10 +93,18 @@ const SinglePostComp = ({ post, comments }) => {
           gap: 5,
         }}
       >
-        <Avatar sx={{ width: 90, height: 90 }} />
+        <Avatar
+          src={imageUrl}
+          {...stringAvatar(post?.username?.toUpperCase())}
+          sx={{ width: 90, height: 90 }}
+        />
         <Stack spacing={1}>
-          <h4 className="heading-tertiary">{post?.username}</h4>
-          <Typography variant="h6">{post?.category}</Typography>
+          <Link to={`/users/${post?.username}`}>
+            <h4 className="heading-tertiary">{post?.username}</h4>
+          </Link>
+          <Link to={`/posts/category/${post?.category}`}>
+            <Typography variant="h6">{post?.category}</Typography>
+          </Link>
         </Stack>
       </Box>
 
