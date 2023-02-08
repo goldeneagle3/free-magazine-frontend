@@ -3,7 +3,6 @@ import React from "react";
 
 import DesktopNavbar from "../components/navbar/DesktopNavbar";
 import Navbar from "../components/navbar/Navbar";
-import LeftSide from "../components/sides/LeftSide";
 import { RightSide } from "../components/sides/RightSide";
 
 
@@ -18,17 +17,17 @@ const MainLayout = ({ children }) => {
         <Navbar />
         {matches ? (
           <Grid container spacing={2}>
-            <Grid
+            {/* <Grid
               xs={12}
               md={3}
               item="true"
               sx={{ borderRight: "0.6px solid #f0eeee",mt: { md: 1, lg: 5 }, }}
             >
               <LeftSide />
-            </Grid>
+            </Grid> */}
             <Grid
               xs={12}
-              md={6}
+              md={8}
               item="true"
               sx={{
                 display: "flex",
@@ -43,7 +42,7 @@ const MainLayout = ({ children }) => {
             </Grid>
             <Grid
               xs={12}
-              md={3}
+              md={4}
               item="true"
               sx={{
                 bgcolor: "#F8F9FA",

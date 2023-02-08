@@ -1,11 +1,23 @@
 .container {
-  margin: 0;
-  background-color: var(--color-grey-light-1);
-  box-shadow: var(--shadow-dark);
+  margin: 5rem 15rem;
+  padding: 0 1rem;
+  padding-bottom: 3rem;
+  background-color: white;
+  box-shadow: var(--shadow-light);
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 5px;
+
+  @include respond(tab-land){
+    margin: 3rem 6rem;
+    padding: 0;
+  }
+
+  @include respond(tab-port){
+    margin: 0;
+    padding: 1rem;
+  }
 }
 
 .landing-layout {
