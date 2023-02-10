@@ -46,8 +46,8 @@ const Landing = () => {
 
         <div className="header__text-box">
           <h1 className="heading-primary">
-            <span className="heading-primary--main">{BRAND}</span>
-            <span className="heading-primary--sub">Ne eserse...</span>
+            <span className="heading-primary--main white-1">{BRAND}</span>
+            <span className="heading-primary--sub white-2">Lorem, ipsum dolor.</span>
           </h1>
 
           <Link to="/home" className="btn btn--white btn--animated">
