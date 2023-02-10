@@ -112,7 +112,19 @@ const MainPage = () => {
           </Grid>
           {!matches &&
             fourPost?.map((a) => (
-              <Grid item xs={12} sm={6} key={a.id}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                key={a.id}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <PostCard post={a} />
               </Grid>
             ))}
@@ -130,7 +142,19 @@ const MainPage = () => {
               }}
             >
               {mainPosts?.map((post) => (
-                <Grid item xs={12} sm={6} key={post?.id}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  key={post?.id}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    textAlign: "center",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   <PostCard post={post} />
                 </Grid>
               ))}

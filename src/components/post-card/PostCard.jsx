@@ -10,7 +10,6 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-
 import LikeComp from "../like/LikeComp";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
@@ -28,9 +27,7 @@ export default function PostCard({ post }) {
   return (
     <Card
       sx={{
-        textAlign: "center",
-        alignItems: "center",
-        maxWidth: { xs: "100%", sm: 375 },
+        maxWidth: { xs: 300, sm: 375 },
         width: "100%",
         bgcolor: "transparent",
         boxShadow: "none",
@@ -47,7 +44,7 @@ export default function PostCard({ post }) {
             alt="post media"
             style={{
               height: matches ? "280px" : "200px",
-              maxWidth: 500,
+              maxWidth: matches ? "100%" : 250,
               width: "100%",
             }}
           />
