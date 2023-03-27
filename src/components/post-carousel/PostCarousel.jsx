@@ -17,7 +17,7 @@ const PostCarousel = ({ posts }) => {
     <Carousel
       // indicators={false}
       navButtonsAlwaysVisible
-      sx={{ borderRadius: "5px" }}
+      sx={{ borderRadius: "0px" }}
       duration={600}
     >
       {posts?.map((item, i) => (
@@ -35,7 +35,7 @@ function Item(props) {
       <Link to={"/posts/" + props.item?.id}>
         <Img
           alt="complex"
-          src={`${BASE_URL}${photosApiUrl}/${props?.item?.imageId}`}
+          src={`${BASE_URL}${photosApiUrl}/${props?.item?.image}`}
           sx={{
             width: "100%",
             height: matches ? "450px" : smMatches ? "350px" : "250px",

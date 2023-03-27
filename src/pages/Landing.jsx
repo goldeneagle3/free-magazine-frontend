@@ -47,7 +47,7 @@ const Landing = () => {
         <div className="header__text-box">
           <h1 className="heading-primary">
             <span className="heading-primary--main white-1">{BRAND}</span>
-            <span className="heading-primary--sub white-2">Lorem, ipsum dolor.</span>
+            <span className="heading-primary--sub white-2">Özgün , Keskin ve Sağlam</span>
           </h1>
 
           <Link to="/home" className="btn btn--white btn--animated">
@@ -65,34 +65,22 @@ const Landing = () => {
         >
           <div className="u-center-text p-padding-bottom-big">
             <h2 className="heading-secondary p-padding-bottom-big">
-              Dergimize Katılmak İster misiniz ?
+              Dergimize Yazar Olun !
             </h2>
-            <p className="paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              expedita at dolorum modi molestias corrupti unde reprehenderit
-              repellat voluptatibus doloremque, quae delectus voluptates vel non
-              tempore esse nisi exercitationem laborum asperiores ullam deleniti
-              distinctio! Nulla quibusdam expedita repudiandae minus et?
+            <p className="paragraph--parsed">
+              İlgi duyduğun ve hakkında bilgi sahibi olduğun bir alan veya alanlar var ise , bu alanlar üzerinde özgün fikirlere sahibim de diyorsan eğer seni aramızda görmeyi çok isteriz. Üzerinde durmak istediğin veya yazmak istediğin konular hakkında uzman olman , çok okumuş olman veya çok pratik yapmış olman bizim için şart değil ancak eleştiriye açık olman , fikirlerinde dürüst olman, özgürlükçü bir zihniyete sahip olman ve her görüşe saygı duyman bizim senden mutlak beklentilerimizdir.    
             </p>
-            <p className="paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              excepturi fugit dolores soluta, aperiam nam ipsa magni minima sed
-              quisquam ipsum saepe. Facilis cum odit nam fugiat ipsam
-              voluptatem? Officiis eaque repudiandae laborum fugit neque aliquid
-              dolore voluptatibus aut fuga ad exercitationem vitae, fugiat sunt
-              magnam earum consequatur expedita illum rerum quia eius laboriosam
-              accusamus similique nemo. Magni sed harum, tempora odio cupiditate
-              expedita facilis dolorum sunt, adipisci velit vero placeat.
-              Voluptas quos consectetur officia hic exercitationem! Officia
-              voluptas, earum non totam temporibus perspiciatis et cupiditate
-              fugiat dolor sunt adipisci! Magnam eos similique facilis soluta
-              error reprehenderit perspiciatis sunt repudiandae nemo. Molestiae
-              vero odit id aliquam. Ad ratione aperiam assumenda totam
-              consequuntur itaque voluptates incidunt cum aspernatur, cupiditate
-              quia, quae rerum et! Hic modi quidem quia nemo pariatur iste,
-              dolorem similique debitis aperiam temporibus, molestias dolores
-              mollitia, itaque nam? Perferendis corrupti, nihil voluptate sint
-              facere nesciunt consectetur exercitationem dolores iure.
+            <h2 className="heading-secondary p-padding-bottom-big">
+              Format
+            </h2>
+            <p className="paragraph--parsed">
+              Dergimizin formatını, amatör ve öğrenmeye açık yazarlarımızın bilgilerini , düşüncelerini ve vizyonlarını geliştirmeye yönelik olması zımnında çalışmak temel gayemizdir. Bu hedef yolunda öncelikli olarak dergiye , sosyal medya uygulamalarında da gördüğümüz , yorum ekleme ve beğenme butonu ekledik. Yazar sayımıza da kota ekledik. Kota koymadaki ana nedenlerimizi öncelikli olarak yazarlara ücret vermek(tabi ki bu dergi para kazanmaya başladıktan sonra olacak) ve sonrasında yazar veya yazar adayları arasındaki rekabeti arttırmak olarak sıralayabiliriz. Bunun yanı sıra , genç ve amatör yazarlarımıza ilham olması , onlarla iletişime geçip onlara tavsiyelerde bulunması ve beklenildiği gibi dergimize kalite katması için alanında uzman hocalarımızı da dergiye kazandırmaya çalışacağız.     
+            </p>
+            <h2 className="heading-secondary p-padding-bottom-big">
+              Yazar Adayları
+            </h2>
+            <p className="paragraph--parsed">
+              Dergimize yazar olmanın birkaç yolu vardır. Bunlardan birini formattan da anlayabileceğiniz üzere dergiye üye olduktan sonra mevcut olan yazarlarımızın yazılarına yaptığınız yorumlarınızın aldığı etkileşimler üzerine yazar olmaya hak kazanmanız olarak açıklayabiliriz. Eğer yazar kotamız dolu ve yorumlarınız da oldukça etkileşim yani beğeni alıyorsa , sizi mevcut yazarlarımızdan en az ilgi gören , en az okunan veya en pasif olan biriyle , sizinle kıyas yaptıktan sonra , takas yapma durumu ortaya çıkabilir ve sonuç olarak yazar olma şansınız hiçbir engelle karşılaşmadan devam eder.       
             </p>
           </div>
         </motion.div>
@@ -104,18 +92,12 @@ const Landing = () => {
         >
           <div className="u-center-text p-padding-bottom-big">
             <h2 className="heading-secondary p-padding-bottom-big">
-              Her Konu Hakkında Yaz !
+              İstediğin Konu Hakkında Yaz !
             </h2>
             <Grid2 container spacing={4} sx={{ mb: 5 }}>
               <Grid2 xs={12} md={6}>
-                <p className="paragraph">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptate aperiam harum aut sed distinctio nesciunt optio
-                  modi, cupiditate unde libero eaque iste commodi animi nulla.
-                  Debitis nemo voluptatibus ipsam qui voluptas excepturi
-                  quisquam eos a quod totam quo repellat ea nostrum magni
-                  voluptatum provident eveniet quibusdam, quis harum explicabo
-                  repudiandae!
+                <p className="paragraph--parsed">
+                  Hukuktan siyasete , spordan magazine , sanattan bilime , astrolojiden yemeğe , animeden tiyatroya , Mars'tan Antik Mısır'a aklınıza gelebilecek her konuda , Sünni , Şii , Ateist , Deist , Alevi , Kürt , Ermeni , Yahudi , Çerkes kimliğiniz , ırkınız hiç farketmeden istediğiniz ve hakkında yazabileceğinizi düşündüğünüz her kategori de yazabilirsiniz. Eleştiriye açık olmayı unutmayın ancak :))   
                 </p>
               </Grid2>
               <Grid2 xs={12} md={6}>

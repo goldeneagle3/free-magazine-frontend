@@ -47,7 +47,7 @@ const EditorEditPostComp = ({ post, categories }) => {
     setValues({ ...values, imageProtect: !imageProtect });
   };
 
-  const photoImage = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
+  const photoImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
   const handleChange = (name) => (event) => {
     const value =
@@ -140,16 +140,14 @@ const EditorEditPostComp = ({ post, categories }) => {
         </Button>
         <span>{image ? image.name : ""}</span>
         <Stack direction="row" spacing={1} sx={{ pb: 4 }}>
-          {post?.profileImageMimType && (
-            <img
-              src={photoImage}
-              style={{
-                width: "20rem",
-                height: "15rem",
-              }}
-              alt="post media"
-            />
-          )}
+          <img
+            src={photoImage}
+            style={{
+              width: "20rem",
+              height: "15rem",
+            }}
+            alt="post media"
+          />
           <Stack direction="row" spacing={0} alignItems="center">
             <Checkbox
               checked={imageProtect}

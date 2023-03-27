@@ -9,20 +9,27 @@ const FormLayout = ({ children, text }) => {
       <Grid item xs={12}>
         <Box
           sx={{
-            border: 1,
-            margin: "5rem auto",
+            border: { xs: 0, md: 1 },
+            margin: "3rem auto",
             padding: { xs: 2, md: 3 },
-            borderColor: { xs: "#fff", md: "#cccccc" },
-            borderRadius: "5px",
+            borderColor: { md: "#cccccc" },
+            borderRadius: { xs: 0, md: "5px" },
             maxWidth: 800,
             width: "100%",
           }}
         >
           <Typography
-            sx={{ mb: 2, fontWeight: 800 }}
+            sx={{
+              mb: 5,
+              fontWeight: 900,
+              fontFamily: '"Roboto", sans-serif',
+              borderLeft: "2px dotted black",
+              borderRight: "2px dotted black",
+              borderTop: "2px dotted black",
+              pt:3
+            }}
             variant="h4"
             align="center"
-            component="h1"
           >
             {text}
           </Typography>

@@ -16,7 +16,7 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 export default function PostCard({ post }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const postImage = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
+  const postImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
   const infos = {
     display: "flex",
@@ -34,23 +34,25 @@ export default function PostCard({ post }) {
         mt: 1.5,
       }}
     >
-      {post.imageMimType && (
-        <Link to={`/posts/${post?.id}`}>
-          <LazyLoadImage
-            effect="blur"
-            className="image__card"
-            loading="lazy"
-            src={postImage}
-            alt="post media"
-            style={{
-              height: matches ? "280px" : "200px",
-              maxWidth: matches ? "100%" : 250,
-              width: "100%",
-            }}
-          />
-        </Link>
-      )}
-      <CardContent sx={{ bgcolor: "#ffffffdf" }}>
+      <Link to={`/posts/${post?.id}`}>
+        <LazyLoadImage
+          effect="blur"
+          className="image__card"
+          loading="lazy"
+          src={postImage}
+          alt="post media"
+          style={{
+            height: matches ? "280px" : "200px",
+            maxWidth: matches ? "100%" : 250,
+            width: "100%",
+          }}
+        />
+      </Link>
+      <CardContent
+        sx={{
+          bgcolor: "transparent",
+        }}
+      >
         <Typography gutterBottom variant="h6" component="div">
           {post?.title?.length > 25
             ? post?.title?.substring(0, 25) + "..."

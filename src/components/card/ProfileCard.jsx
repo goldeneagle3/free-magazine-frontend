@@ -8,10 +8,10 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 import { stringAvatar } from "../../utils/CustomProfileImage";
 
 const ProfileCard = ({ author, bgImage }) => {
-  const photoImage = `${BASE_URL}${photosApiUrl}/${author?.imageId}`;
+  const photoImage = `${BASE_URL}${photosApiUrl}/${author?.image}`;
 
   const bgStyle = {
-    backgroundImage: `url(${author?.imageName ? photoImage : bgImage})`,
+    backgroundImage: `url(${author?.image ? photoImage : bgImage})`,
     backgroundColor: "grey",
   };
 
@@ -28,11 +28,9 @@ const ProfileCard = ({ author, bgImage }) => {
         </div>
         <div className="card__details">
           <p className="paragraph--min p-padding-top-small">
-            {/* {author?.description} */}
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
-            corrupti laboriosam pariatur, iure repellendus ab in, vel
-            perferendis id voluptates sed. Officia beatae modi architecto
-            voluptate corporis. Nostrum ex alias quia, fuga est opt
+            {author?.description?.length > 300
+              ? author?.description?.substring(0, 300) + "..."
+              : author?.description}
           </p>
         </div>
       </div>

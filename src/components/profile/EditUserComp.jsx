@@ -20,7 +20,7 @@ const EditUserComp = ({ username }) => {
   const { data, isLoading } = useGetAuthorByQuery(username);
   const [updateUserFn, { isLoading: usrLoading, isError, error }] =
     useUpdateUserMutation();
-  const photoImage = `${BASE_URL}${photosApiUrl}/${data?.imageId}`;
+  const photoImage = `${BASE_URL}${photosApiUrl}/${data?.image}`;
   const [values, setValues] = useState({
     firstName: data?.firstName,
     lastName: data?.lastName,
@@ -86,16 +86,14 @@ const EditUserComp = ({ username }) => {
         </Button>
         <span>{image ? image.name : ""}</span>
         <Stack direction="row" spacing={1} sx={{ pb: 4 }}>
-          {data?.imageExist && (
-            <img
-              src={photoImage}
-              style={{
-                width: "20rem",
-                height: "15rem",
-              }}
-              alt="user media"
-            />
-          )}
+          <img
+            src={photoImage}
+            style={{
+              width: "20rem",
+              height: "15rem",
+            }}
+            alt="user media"
+          />
           <Stack direction="row" spacing={0} alignItems="center">
             <Checkbox
               checked={imageProtect}

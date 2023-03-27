@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BsFacebook, BsTwitter, BsYoutube } from "react-icons/bs";
 import { AiFillInstagram, AiOutlineLogout } from "react-icons/ai";
@@ -35,10 +35,13 @@ import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
 
 const pages = [
   { id: 0, pageName: "/posts", navName: "Tüm Yazıları Gör" },
-  { id: 1, pageName: "/construction", navName: "İletişim" },
+  { id: 1, pageName: "/contact-us", navName: "İletişim" },
 ];
 
 const DesktopNavbar = () => {
+  const colors = {
+    navButtonColor: "#073b6b",
+  };
   const navigate = useNavigate();
   const username = useSelector(selectCurrentUsername);
   const userRoles = useSelector(selectCurrentUserRoles);
@@ -78,14 +81,25 @@ const DesktopNavbar = () => {
   }
 
   return (
-    <AppBar position="static" sx={{ boxShadow: "none", mb: 2 }}>
+    <AppBar
+      position="static"
+      sx={{ bgcolor: "transparent", boxShadow: "none" }}
+    >
       <Container
         maxWidth="xl"
         sx={{
-          background: "linear-gradient(to right bottom, #6a98c4, #073b6b)",
+          maxWidth: "100%",
         }}
       >
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{
+            p: {
+              lg: "2rem 12rem",
+              md: "2rem 3rem",
+            },
+          }}
+        >
           <Avatar src={Logo} sx={{ maxWidth: "100%", height: "auto" }} />
           <Link to="/home" style={{ marginLeft: "1rem", color: "inherit" }}>
             <h3 className="list-header">{BRAND}</h3>
@@ -101,11 +115,11 @@ const DesktopNavbar = () => {
                   fontSize: "1.1rem",
                   fontWeight: "900",
                   my: 2,
-                  color: "#f0eeee",
+                  color: colors.navButtonColor,
                   fontSizeAdjust: "inherit",
                   display: "block",
                   ":hover": {
-                    bgcolor: "#9b1c46",
+                    bgcolor: "#8baeeb",
                   },
                 }}
               >
@@ -126,19 +140,19 @@ const DesktopNavbar = () => {
               direction="row"
               spacing={2}
               alignItems="center"
-              sx={{ mt: 1, mx: 3 }}
+              sx={{ mt: 1, mx: 3, color: colors.navButtonColor }}
             >
               <a href="https://www.facebook.com">
-                <BsFacebook size={20} color="#f0eeee" />
+                <BsFacebook size={20} />
               </a>
               <a href="https://www.instagram.com">
-                <AiFillInstagram size={20} color="#f0eeee" />
+                <AiFillInstagram size={20} />
               </a>
               <a href="https://twitter.com">
-                <BsTwitter size={20} color="#f0eeee" />
+                <BsTwitter size={20} />
               </a>
               <a href="https://youtube.com">
-                <BsYoutube size={20} color="#f0eeee" />
+                <BsYoutube size={20} />
               </a>
             </Stack>
             {username ? (
@@ -152,7 +166,9 @@ const DesktopNavbar = () => {
                     {...stringAvatar(username.toUpperCase())}
                     src={imageUrl}
                   />
-                  <Typography sx={{ color: "#f0eeee" }}>{username}</Typography>
+                  <Typography sx={{ color: colors.navButtonColor }}>
+                    {username}
+                  </Typography>
                 </Button>
               </Tooltip>
             ) : (
@@ -225,6 +241,11 @@ const DesktopNavbar = () => {
                         </Typography>
                       </Link>
                     </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Link to={`/administration/mails`}>
+                        <Typography textAlign="center">Mail Sayfası</Typography>
+                      </Link>
+                    </MenuItem>
                   </div>
                 )}
                 <MenuItem onClick={handleCloseUserMenu}>
@@ -251,7 +272,17 @@ const DesktopNavbar = () => {
             )}
           </Box>
         </Toolbar>
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{
+            m: {
+              lg: "0 12rem",
+              md: "0 3rem",
+            },
+            bgcolor: "white",
+            borderRadius: "15px",
+          }}
+        >
           <Box
             sx={{
               flexGrow: 1,
@@ -266,19 +297,25 @@ const DesktopNavbar = () => {
             {items?.map((category) => (
               <Button
                 key={category?.id}
-                onClick={() => navigate(`/posts/category/${category?.name}`)}
+                component={NavLink}
+                to={`/posts/category/${category?.name}`}
                 sx={{
                   mx: { md: 1, lg: 2 },
                   my: 1,
                   px: 1,
-                  fontSize: "1.1rem",
+                  fontSize: "1.3rem",
                   fontWeight: "900",
-                  color: "#dadcdf",
+                  color: colors.navButtonColor,
                   display: "block",
+                  "&.active": {
+                    color:"#8baeeb",
+                    bgcolor: "#082659",
+                  },
                   ":hover": {
-                    bgcolor: "#c5608236",
-                    borderBottom: "1px solid #9b1c46",
-                    borderRight: "2px solid #9b1c46",
+                    color: "#082659",
+                    bgcolor: "#8baeeb",
+                    borderBottom: "1px solid #082659",
+                    borderRight: "2px solid #082659",
                   },
                 }}
               >

@@ -9,8 +9,8 @@ export default function AuthButton({ text }) {
       animate={{ x: [40, 0], y: [-200, 0], opacity: [0.4, 1] }}
       whileHover={{
         scale: 1.02,
-        textShadow: "0px 0px 8px #9b1c46",
-        boxShadow: "0px 0px 8px rgb(240,255,255)",
+        textShadow: "0px 0px 8px #12306b",
+        boxShadow: "0px 0px 8px rgb(12, 153, 153)",
       }}
       className="custom-button"
     >

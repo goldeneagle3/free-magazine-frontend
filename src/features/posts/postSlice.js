@@ -86,12 +86,6 @@ export const postsApiSlice = apiSlice.injectEndpoints({
         );
         return posts;
       },
-      providesTags: [
-        {
-          type: "Post",
-          id: "LIST",
-        },
-      ],
     }),
     getPostsByCategory: builder.query({
       query: (categoryName) => ({

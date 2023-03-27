@@ -49,7 +49,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
               accessToken: refreshResult.data?.accessToken,
               username: refreshResult?.data?.username,
               userRoles: refreshResult?.data?.roles,
-              image: refreshResult?.data?.imageId,
+              image: refreshResult?.data?.image,
               imageExist: refreshResult?.data?.mimType,
             })
           );

@@ -373,6 +373,11 @@ const ModernNavbar = () => {
                 </Link>
               </MenuItem>
               <MenuItem>
+                <Link to={`/administration/mails`} style={linkStyles}>
+                  <Typography textAlign="center">Mail Sayfası</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem>
                 <Link
                   to={`/administration/deactivatedPosts`}
                   style={linkStyles}

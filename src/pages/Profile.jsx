@@ -1,4 +1,5 @@
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Stack } from "@mui/system";
 import React from "react";
 import { useParams } from "react-router-dom";
 import ResourceNotFound from "../components/error/ResourceNotFound";
@@ -14,6 +15,7 @@ const Profile = () => {
   const { username } = useParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const matchesTab = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const { data, isLoading, isError, error } = useGetAuthorByQuery(username);
   const { data: posts, isLoading: postLoading } =
     useGetPostsByAuthorQuery(username);
@@ -33,8 +35,26 @@ const Profile = () => {
         <MainLoadingComp isLoading={postLoading} />
       ) : matches ? (
         posts?.map((post) => <ExPostCard key={post.id} post={post} />)
+      ) : matchesTab ? (
+        <Grid container>
+          {posts?.map((p) => (
+            <Grid sm={6} key={p?.id}>
+              <PostCard post={p} />
+            </Grid>
+          ))}
+        </Grid>
       ) : (
-        posts?.map((post) => <PostCard key={post.id} post={post} />)
+        <div className="container" style={{ backgroundColor: "transparent",boxShadow:'none' }}>
+          {posts?.map((post) => (
+            <Stack
+              spacing={3}
+              sx={{ pt: 3, mb: 4, backgroundColor: "transparent" }}
+              alignItems="center"
+            >
+              <PostCard key={post.id} post={post} />
+            </Stack>
+          ))}
+        </div>
       )}
     </ProfileLayout>
   );

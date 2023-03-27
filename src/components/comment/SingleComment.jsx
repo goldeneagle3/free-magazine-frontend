@@ -13,7 +13,7 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const SingleComment = ({ comment }) => {
   moment.locale('tr');
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${comment?.userImageId}`;
+  const imageUrl = `${BASE_URL}${photosApiUrl}/${comment?.userImage}`;
   const alignItems = {
     display: "flex",
     justifyContent: "center",

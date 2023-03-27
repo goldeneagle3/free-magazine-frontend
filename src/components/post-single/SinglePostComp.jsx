@@ -25,7 +25,7 @@ const SinglePostComp = ({ post, comments }) => {
   const navigate = useNavigate();
   const username = useSelector(selectCurrentUsername);
   const [deletePost, { isLoading }] = useDeactivatePostMutation();
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.profileImageId}`;
+  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

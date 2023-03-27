@@ -1,15 +1,15 @@
-import React from 'react'
-import ModernNavbar from '../components/navbar/ModernNavbar'
-import Navbar from '../components/navbar/Navbar'
+import React from "react";
+import ModernNavbar from "../components/navbar/ModernNavbar";
+import Navbar from "../components/navbar/Navbar";
 
-const ProfileLayout = ({children}) => {
+const ProfileLayout = ({ children }) => {
   return (
-    <div className='profile_layout'>
+    <div className="profile_layout">
       <Navbar />
       <ModernNavbar />
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default ProfileLayout
+export default ProfileLayout;

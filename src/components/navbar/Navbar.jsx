@@ -98,7 +98,7 @@ export default function Navbar(props) {
         }}
       >
         <Link to="/home">
-          <Avatar src={Logo} sx={{ width: '100%', height: 25 }} />
+          <Avatar src={Logo} sx={{ width: "100%", height: 25 }} />
         </Link>
         <Typography
           variant="h6"
@@ -162,6 +162,22 @@ export default function Navbar(props) {
               ))}
           </List>
         </Collapse>
+        <Link to="/posts">
+          <ListItemButton
+            sx={{
+              textAlign: "center",
+              bgcolor: "#073b6b",
+              color: "#f4f2f2",
+              ":hover": {
+                bgcolor: "#f4f2f2",
+                color: "#073b6b",
+                borderRadius: "2%",
+              },
+            }}
+          >
+            <ListItemText primary="Tüm Yazılar!" />
+          </ListItemButton>
+        </Link>
 
         {authUser ? (
           <ListItemButton

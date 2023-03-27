@@ -20,7 +20,7 @@ const AuthorsAvatar = () => {
               sx={{ m: 1 }}
             >
               <Avatar
-                src={`${BASE_URL}${photosApiUrl}/${author?.imageId}`}
+                src={`${BASE_URL}${photosApiUrl}/${author?.image}`}
                 {...stringAvatar(author?.username.toUpperCase())}
                 sx={{
                   width: 50,

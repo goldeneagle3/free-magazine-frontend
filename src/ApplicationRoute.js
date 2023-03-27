@@ -23,6 +23,9 @@ import CategoryPage from "./pages/CategoryPage";
 import MainPage from "./pages/MainPage";
 import NoPage from "./pages/NoPage";
 import DeactivatedPosts from "./pages/DeactivatedPosts";
+import Contact from "./pages/Contact";
+import Mail from "./pages/Mail";
+import SingleMail from "./pages/SingleMail";
 
 const ROLES = {
   User: "ROLE_USER",
@@ -30,6 +33,8 @@ const ROLES = {
   Editor: "ROLE_EDITOR",
   Admin: "ROLE_ADMIN",
 };
+Object.freeze(ROLES);
+
 const ApplicationRoute = () => {
   const accessToken = useSelector(selectCurrentToken);
   return (
@@ -48,6 +53,7 @@ const ApplicationRoute = () => {
               }
             />
             <Route path="/home" element={<MainPage />} />
+            <Route path="/contact-us" element={<Contact />} />
             <Route path="construction" element={<Construction />} />
             <Route path="/posts">
               <Route index element={<Home />} />
@@ -148,6 +154,30 @@ const ApplicationRoute = () => {
                   </RequireAuth>
                 }
               />
+              <Route path="mails">
+                <Route
+                  index
+                  element={
+                    <RequireAuth
+                      accessToken={accessToken}
+                      allowedRoles={ROLES.Admin}
+                    >
+                      <Mail />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path=":messageId"
+                  element={
+                    <RequireAuth
+                      accessToken={accessToken}
+                      allowedRoles={ROLES.Admin}
+                    >
+                      <SingleMail />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
             </Route>
             <Route path="*" element={<NoPage />} />
           </Route>

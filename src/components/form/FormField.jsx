@@ -1,7 +1,7 @@
 import React from "react";
 import * as _ from "lodash";
 
-import { InputLabel, TextField } from "@mui/material";
+import { InputLabel, TextField, Typography } from "@mui/material";
 
 export default function FormField({
   fieldName,
@@ -27,14 +27,20 @@ export default function FormField({
         onChange={onChange}
         onBlur={onBlur}
         error={error}
-        helperText={error ? helperText : ""}
+        helperText={
+          error || helperText ? (
+            <Typography className="list-header"> {helperText} </Typography>
+          ) : (
+            ""
+          )
+        }
         type={type}
         name={fieldName}
         id={fieldName}
         fullWidth={fullwidth}
         size="small"
         placeholder={placeholder ? placeholder : ""}
-        sx={{ borderColor: "red" }}
+        sx={{ borderColor: "red", maxWidth: 600 }}
       />
     </React.Fragment>
   );

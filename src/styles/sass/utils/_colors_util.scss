@@ -14,3 +14,14 @@
   }
 
 }
+
+
+.bg-color {
+
+  &-black {
+
+    &-1 {
+      background-color: var(--color-grey-dark-1);
+    }
+  }
+}

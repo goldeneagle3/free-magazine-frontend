@@ -18,8 +18,8 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 export default function ExPostCard({ post }) {
   const userRoles = useSelector(selectCurrentUserRoles);
-  const postImage = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
-  const userImage = `${BASE_URL}${photosApiUrl}/${post?.profileImageId}`;
+  const postImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
+  const userImage = `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -33,7 +33,7 @@ export default function ExPostCard({ post }) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const text2 = post?.content?.substring(0, 300).toString();
+  const text2 = post?.content?.substring(0, 300).toString() + "...";
   let text;
   if (typeof text2 === "string") {
     text = parseHtmlText(text2);
@@ -148,7 +148,6 @@ export default function ExPostCard({ post }) {
         {/* Middle */}
         <Box
           sx={{
-            p: 0.8,
             display: "flex",
             gap: 1,
             justifyContent: "space-between",
@@ -169,33 +168,30 @@ export default function ExPostCard({ post }) {
             <Typography
               align="left"
               paragraph
+              className="paragraph--parsed"
               sx={{
-                p: 0.4,
+                p: 0.9,
                 color: "black",
-                fontSize: { xs: 11, md: 14 },
-                lineBreak: "anywhere",
-                flexWrap: "wrap",
+                fontSize: { xs: 11, md: 12 },
               }}
             >
               {text}
             </Typography>
           </Box>
-          {post.imageMimType && (
-            <LazyLoadImage
-              style={{
-                width: "110px",
-                height: "110px",
-                float: "left",
-                borderRadius: "50%",
-                shapeOutside: "circle(50%)",
-              }}
-              effect="blur"
-              className="image__card"
-              loading="lazy"
-              src={postImage}
-              alt="post media"
-            />
-          )}
+          <LazyLoadImage
+            className="image__card"
+            style={{
+              width: "110px",
+              height: "110px",
+              float: "left",
+              borderRadius: "50%",
+              shapeOutside: "circle(50%)",
+            }}
+            effect="blur"
+            loading="lazy"
+            alt="post media"
+            src={postImage}
+          />
         </Box>
 
         {/* Bottom */}

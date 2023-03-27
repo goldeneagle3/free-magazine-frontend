@@ -1,9 +1,8 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
-import { AiOutlineLike, AiOutlineComment } from "react-icons/ai";
-import moment from "moment/moment";
 import { Link } from "react-router-dom";
+
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const Img = styled("img")({
@@ -14,25 +13,8 @@ const Img = styled("img")({
 });
 
 const SidePost = ({ post }) => {
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.imageId}`;
+  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
-  const alignItems = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    textAlign: "center",
-  };
-
-  const stateBoxLayout = {
-    ...alignItems,
-    gap: 3,
-  };
-
-  const stateBox = {
-    ...alignItems,
-    gap: 1,
-    fontSize: "1.4rem",
-  };
   return (
     <Paper
       sx={{
@@ -45,23 +27,28 @@ const SidePost = ({ post }) => {
       elevation={0}
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        {post?.imageMimType && (
-          <Box item>
-            <Link to={"/posts/" + post?.id}>
-              <Img
-                alt="complex"
-                src={imageUrl}
-                sx={{ maxHeight: "23rem", width: "100%", height: "100%" }}
-              />
-            </Link>
-          </Box>
-        )}
+        <Box item>
+          <Link to={"/posts/" + post?.id}>
+            <Img
+              alt="complex"
+              src={imageUrl}
+              sx={{ maxHeight: "23rem", width: "100%", height: "100%" }}
+            />
+          </Link>
+        </Box>
         {/* <Divider sx={{ color: "red" }} /> */}
         <Box sx={{ p: 0.5 }}>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
-              <Typography gutterBottom variant="h5" component="div">
-                {post?.title}
+              <Typography
+                className="typography-util--paragraph--parsed"
+                align="left"
+                gutterBottom
+                fontWeight={900}
+                sx={{ fontSize: 13 }}
+                component="div"
+              >
+                {post?.title?.length > 22 ? post.title?.substring(0,22) + "..." : post.title}
               </Typography>
               <Box
                 sx={{
@@ -88,23 +75,6 @@ const SidePost = ({ post }) => {
               </Box>
             </Grid>
           </Grid>
-          <Box sx={{ ...alignItems, mt: 4 }}>
-            <Box sx={stateBoxLayout}>
-              <Box sx={stateBox}>
-                <AiOutlineLike />
-                <Typography>{post?.likes}</Typography>
-              </Box>
-              <Box sx={stateBox}>
-                <AiOutlineComment />
-                <Typography>{post?.comments}</Typography>
-              </Box>
-            </Box>
-            <Link to={`/posts/${post?.id}`}>
-              <Typography sx={{ cursor: "pointer" }} variant="body1">
-                {moment(post.createDateTime).fromNow()}
-              </Typography>
-            </Link>
-          </Box>
         </Box>
       </Box>
       <Divider />

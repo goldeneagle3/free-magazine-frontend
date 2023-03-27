@@ -31,7 +31,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="footer__item">
-                  <Link to="/construction" className="footer__link">
+                  <Link to="/contact-us" className="footer__link">
                     İletişim
                   </Link>
                 </li>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </li>
                 <li className="footer__item">
                   <Link to="/construction" className="footer__link">
-                    kullanım Şartları
+                    Kullanım Şartları
                   </Link>
                 </li>
               </ul>
@@ -62,7 +62,7 @@ const Footer = () => {
                   sx={{ alignItems: "center" }}
                 >
                   <MdEmail />
-                  <p>herbokolog96@gmail.com</p>
+                  <p>gugultas@gmail.com</p>
                 </Stack>
                 <Stack
                   direction="row"

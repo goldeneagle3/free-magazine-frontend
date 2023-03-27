@@ -20,6 +20,14 @@ export const validateTitleLength = (text) => {
   return _validateLength(text, { min: 2 });
 };
 
+export const validateContactContentLength = (text) => {
+  return _validateLength(text, { min: 25 });
+};
+
+export const validateContentTitleLength = (text) => {
+  return _validateLength(text, { min: 2, max: 60 });
+};
+
 export const validateContentLength = (text) => {
   return _validateLength(text, { min: 500 });
 };

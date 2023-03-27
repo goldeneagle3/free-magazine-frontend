@@ -5,7 +5,7 @@ import "./../../styles/sass/main.scss";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const ProfileBox = ({ user }) => {
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${user?.imageId}`;
+  const imageUrl = `${BASE_URL}${photosApiUrl}/${user?.image}`;
   return (
     <div className="profile">
       <div className="profile__box">

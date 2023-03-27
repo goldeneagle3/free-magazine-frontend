@@ -116,10 +116,10 @@
   border: 1px solid #fff;
   border-radius: 2em;
   cursor: pointer;
-  color: $color-secondary-dark;
-  background-color: $color-secondary-light;
+  color: $color-primary-dark;
+  background-color: $color-primary-light;
   &:hover {
-    color: $color-secondary-light;
-    background-color: $color-secondary-dark;
+    color: $color-primary-light;
+    background-color: $color-primary-dark;
   }
 }

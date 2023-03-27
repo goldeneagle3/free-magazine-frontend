@@ -15,8 +15,7 @@ const useRefreshToken = () => {
           accessToken: response?.data?.accessToken,
           username: response?.data?.username,
           userRoles: response?.data?.roles,
-          image: response?.data?.imageId,
-          imageExist: response?.data?.mimType,
+          image: response?.data?.image,
         })
       );
     } else {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, List, Typography } from "@mui/material";
 
 import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
 import CategoriesSideList from "../list/CategoriesSideList";
@@ -33,6 +33,7 @@ export const RightSide = () => {
         display: "flex",
         flexDirection: "column",
         gap: { md: 0, lg: 1 },
+        px: { xs: 4, sm: 19, md: 0 }
       }}
     >
       {/* Authors */}
@@ -44,13 +45,9 @@ export const RightSide = () => {
           <ResourceNotFound isError={athIsErr} error={athErr} />
         ) : (
           authors?.map((author) => (
-            <ListItem key={author?.id}>
-              <ListItemText sx={{ fontSize: 30 }}>
-                <Link to={"/users/" + author?.username}>
-                  <h3 className="side-list-text">{author?.username}</h3>
-                </Link>
-              </ListItemText>
-            </ListItem>
+            <Link to={"/users/" + author?.username} key={author?.id}>
+              <h3 className="side-list-text">{author?.username}</h3>
+            </Link>
           ))
         )}
       </List>

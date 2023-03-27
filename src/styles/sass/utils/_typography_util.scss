@@ -1,0 +1,14 @@
+.typography-util {
+  &--parsed {
+    max-width: fit-content;
+    justify-content: center;
+    width: fit-content;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: keep-all;
+    line-break: loose;
+    flex-wrap: wrap;
+  }
+}

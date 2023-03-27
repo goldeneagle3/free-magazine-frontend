@@ -8,5 +8,5 @@ export const authApiUrl = "/auth";
 export const postsApiUrl = "/posts";
 export const commentsApiUrl = "/comments";
 export const likesApiUrl = "/likes";
-export const photosApiUrl = "/photos";
+export const photosApiUrl = "/photos/download";
 export const categoriesApiUrl = "/categories";

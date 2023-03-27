@@ -93,6 +93,12 @@ const SignUpForm = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (password !== confirmPassword) {
+      setErrMsg("Şifreler eşleşmiyor");
+      setOpen(true);
+      return;
+    }
+
     if (
       nameHasError ||
       emailHasError ||
@@ -182,9 +188,14 @@ const SignUpForm = () => {
           value={confirmPassword}
           onChange={confirmPasswordChangeHandler}
           onBlur={confirmPasswordBlurHandler}
-          error={confirmPassword.length > 0 && password !== confirmPassword}
+          error={
+            confirmPassword.length > 0 &&
+            password?.length !== confirmPassword?.length
+          }
           helperText={
-            password !== confirmPassword ? "Şifreler eşleşmiyor!" : ""
+            password?.length !== confirmPassword?.length
+              ? "Şifreler eşleşmiyor!"
+              : ""
           }
           type="password"
         />

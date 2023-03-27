@@ -8,18 +8,17 @@ const ResourceNotFound = ({ isError, error }) => {
     <Stack spacing={1}>
       <p className="error-text"> Veri(ler) bulunamadı. </p>
       <p className="error-text">
-        Büyük ihtimalle serverlerimizde bir sorun var.
-      </p>
-      <p className="error-text">
         {error?.error
           ? error.error
           : error?.data
-          ? typeof error.data === "string" ? error.data : error?.data?.message
-          : error?.message 
+          ? typeof error.data === "string"
+            ? error.data
+            : error?.data?.message
+          : error?.message
           ? error.message
           : typeof error === "string"
           ? error
-          : ""}
+          : "Büyük ihtimalle serverlerimizde bir sorun var."}
       </p>
     </Stack>
   ) : null;

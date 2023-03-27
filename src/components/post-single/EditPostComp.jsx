@@ -58,7 +58,7 @@ const EditPostComp = ({ postId }) => {
     setValues({ ...values, imageProtect: !imageProtect });
   };
 
-  const photoImage = `${BASE_URL}${photosApiUrl}/${data?.imageId}`;
+  const photoImage = `${BASE_URL}${photosApiUrl}/${data?.image}`;
 
   const handleChange = (name) => (event) => {
     const value =
@@ -150,16 +150,14 @@ const EditPostComp = ({ postId }) => {
         </Button>
         <span>{image ? image.name : ""}</span>
         <Stack direction="row" spacing={1} sx={{ pb: 4 }}>
-          {data?.imageMimType && (
-            <img
-              src={photoImage}
-              style={{
-                width: "20rem",
-                height: "15rem",
-              }}
-              alt="post media"
-            />
-          )}
+          <img
+            src={photoImage}
+            style={{
+              width: "20rem",
+              height: "15rem",
+            }}
+            alt="post media"
+          />
           <Stack direction="row" spacing={0} alignItems="center">
             <Checkbox
               checked={imageProtect}
