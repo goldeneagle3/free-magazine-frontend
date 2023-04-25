@@ -22,6 +22,7 @@ import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
 import { useAddPostMutation } from "../../features/posts/postSlice";
 import MainLoadingComp from "../loading/MainLoadingComp";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
+import { useGetSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
 
 export default function NewPostComp() {
   const navigate = useNavigate();
@@ -35,6 +36,14 @@ export default function NewPostComp() {
   const [progress, setProgress] = React.useState(false);
   const [error, setError] = React.useState("");
   const [content, setContent] = React.useState("");
+
+  const { data: subCategories } = useGetSubCategoriesByCategoryQuery(category, {
+    skip: false,
+  });
+  const [subCtgValue, setSubCtgValue] = React.useState(
+    subCategories ? subCategories[subCategories?.length - 1]?.name : null
+  );
+  const [subCategory, setSubCategory] = React.useState("");
 
   const {
     text: photo,
@@ -67,6 +76,10 @@ export default function NewPostComp() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (category === "" || subCategory === "") {
+      return;
+    }
+
     if (titleHasError) return;
 
     if (!validateContentLength(content)) {
@@ -78,6 +91,7 @@ export default function NewPostComp() {
     let newPost = new FormData();
 
     category && newPost.append("category", category);
+    subCategory && newPost.append("subCategory", subCategory);
     photo && newPost.append("image", photo);
     content && newPost.append("content", content);
     title && newPost.append("title", title);
@@ -126,6 +140,29 @@ export default function NewPostComp() {
             />
           )}
         />
+        <Autocomplete
+          disablePortal
+          id="subCategory"
+          value={subCtgValue}
+          onChange={(event, newValue) => {
+            setSubCtgValue(newValue);
+          }}
+          inputValue={subCategory}
+          onInputChange={(event, newInputValue) => {
+            setSubCategory(newInputValue);
+          }}
+          options={subCategories?.map((c) => c.name).sort()}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField
+              id="subCategory"
+              label="Alt Kategori"
+              placeholder="Alt Kategori Seç"
+              fullWidth
+              {...params}
+            />
+          )}
+        />
         <Button
           variant="contained"
           component="label"
@@ -163,7 +200,7 @@ export default function NewPostComp() {
           fullwidth={true}
           placeholder="Alt başlık"
         />
-        <div style={{ maxWidth: "100%", margin: "0 auto" }}>
+        <div style={{ maxWidth: "100%", margin: "3rem auto" }}>
           <EditorToolbar />
           <ReactQuill
             theme="snow"

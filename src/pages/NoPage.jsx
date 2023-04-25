@@ -20,7 +20,7 @@ const NoPage = () => {
           alt="Page Not Found"
           style={{ height: "350px" }}
         />
-        <h4 className="heading-primary--sub">Aradığınız Sayfa Bulunamadı.</h4>
+        <h4 className="heading-tertiary">Aradığınız Sayfa Bulunamadı.</h4>
         <ReturnButton />
         <Link to={from}>
           <AuthButton text="Anasayfaya Dön" />

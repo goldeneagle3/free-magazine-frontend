@@ -8,7 +8,7 @@ import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function PlainPostCard({ post }) {
-  const postImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
+  const postImage = post?.image && `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
   return (
     <Card

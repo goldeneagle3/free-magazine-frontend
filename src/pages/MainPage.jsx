@@ -22,6 +22,7 @@ import {
 import PostsList from "../features/posts/PostsList";
 import MainPageLayout from "../layouts/MainPageLayout";
 import Logo from "./../assets/img/logodnm4.png";
+import { shortIntroText } from "../utils/shortIntroText";
 
 const MainPage = () => {
   const theme = useTheme();
@@ -88,12 +89,7 @@ const MainPage = () => {
                   />
                   <h3 className="list-header">{BRAND}</h3>
                 </Stack>
-                <p className="paragraph">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  culpa harum, delectus esse eos est consectetur asperiores
-                  repellendus placeat laudantium sit nisi amet deserunt animi
-                  natus accusantium ad impedit corrupti reprehenderit.
-                </p>
+                <p className="paragraph--parsed">{shortIntroText}</p>
               </Stack>
             </Grid>
             <Grid
@@ -112,7 +108,7 @@ const MainPage = () => {
             >
               <AuthorsAvatar />
             </Grid>
-            <Grid item xs={12} md={9} sx={{ mt: 0 }}>
+            <Grid item xs={12} md={8} sx={{ mt: 0 }}>
               {/* <PostsList /> */}
               <Grid
                 container
@@ -147,11 +143,11 @@ const MainPage = () => {
             <Grid
               item
               xs={12}
-              md={3}
+              md={4}
               sx={{ mt: 0, mx: { xs: 4, sm: 19, md: 0 } }}
             >
               <Stack spacing={4}>
-                <Stack>
+                <Stack sx={{ border: "1px solid #ccc", p: 1 }}>
                   <h4 className="list-header p-padding-bottom-small">
                     Kategoriler
                   </h4>
@@ -159,7 +155,7 @@ const MainPage = () => {
                     <CategoriesSideList key={c.id} category={c} />
                   ))}
                 </Stack>
-                <Stack>
+                <Stack sx={{ border: "1px solid #ccc", p: 1 }}>
                   <h4 className="list-header u-margin-bottom-small u-margin-top-medium">
                     Popüler Yazılar
                   </h4>
@@ -179,7 +175,11 @@ const MainPage = () => {
       </MainPageLayout>
       {!matches && (
         <>
-          <Grid container spacing={5} sx={{px: { xs: 1,sm:8, md: 0 }, p: 2, bgcolor: "white" }}>
+          <Grid
+            container
+            spacing={5}
+            sx={{ px: { xs: 1, sm: 8, md: 0 }, p: 2, bgcolor: "white" }}
+          >
             <Grid item xs={12} md={8}>
               <PostCarousel posts={data} />
             </Grid>
@@ -209,11 +209,8 @@ const MainPage = () => {
                   />
                   <h3 className="list-header">{BRAND}</h3>
                 </Stack>
-                <p className="paragraph">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  culpa harum, delectus esse eos est consectetur asperiores
-                  repellendus placeat laudantium sit nisi amet deserunt animi
-                  natus accusantium ad impedit corrupti reprehenderit.
+                <p className="paragraph--parsed p-padding-right-medium p-padding-left-medium">
+                  {shortIntroText}
                 </p>
               </Stack>
             </Grid>

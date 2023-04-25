@@ -85,7 +85,7 @@ const ContactFormComp = () => {
           placeholder="Email"
         />
         <FormField
-          fieldName="title"
+          fieldName="başlık"
           value={title}
           onChange={titleChangeHandler}
           onBlur={titleBlurHandler}

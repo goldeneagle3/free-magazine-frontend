@@ -26,6 +26,7 @@ import EditorToolbar, {
   formats,
   modules,
 } from "./../../utils/QuillEditorToolbar";
+import { useGetSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
 
 const EditorEditPostComp = ({ post, categories }) => {
   const navigate = useNavigate();
@@ -38,10 +39,21 @@ const EditorEditPostComp = ({ post, categories }) => {
     subtitle: post?.subtitle,
     imageProtect: true,
   });
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState( post?.category ? post.category : "");
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(false);
   const [content, setContent] = useState(post?.content);
+
+  const { data: subCategories } = useGetSubCategoriesByCategoryQuery(category, {
+    skip: false,
+  });
+  const [subCtgValue, setSubCtgValue] = useState(
+    subCategories ? subCategories[subCategories?.length - 1].name : null
+  );
+
+  console.log(post)
+  const [subCategory, setSubCategory] = useState(post?.subCategory ? post.subCategory : "");
+
 
   const handleImageControlChange = (event) => {
     setValues({ ...values, imageProtect: !imageProtect });
@@ -63,6 +75,10 @@ const EditorEditPostComp = ({ post, categories }) => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (category === "" || subCategory === "") {
+      return;
+    }
+
     const { image, title, subtitle, imageProtect } = values;
 
     if (!validateTitleLength(title) || !validateContentLength(content)) {
@@ -74,6 +90,7 @@ const EditorEditPostComp = ({ post, categories }) => {
     let newPost = new FormData();
 
     category && newPost.append("category", category);
+    subCategory && newPost.append("subCategory", subCategory);
     image && newPost.append("image", image);
     content && newPost.append("content", content);
     title && newPost.append("title", title);
@@ -120,6 +137,29 @@ const EditorEditPostComp = ({ post, categories }) => {
               id="category"
               label="Kategori"
               placeHolder="Kategori Seç"
+              fullWidth
+              {...params}
+            />
+          )}
+        />
+        <Autocomplete
+          disablePortal
+          id="subCategory"
+          value={subCtgValue}
+          onChange={(event, newValue) => {
+            setSubCtgValue(newValue);
+          }}
+          inputValue={subCategory}
+          onInputChange={(event, newInputValue) => {
+            setSubCategory(newInputValue);
+          }}
+          options={subCategories?.map((c) => c.name).sort()}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField
+              id="subCategory"
+              label="Alt Kategori"
+              placeholder="Alt Kategori Seç"
               fullWidth
               {...params}
             />

@@ -16,7 +16,7 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 export default function PostCard({ post }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const postImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
+  const postImage = post?.image && `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
   const infos = {
     display: "flex",

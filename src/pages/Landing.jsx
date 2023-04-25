@@ -60,7 +60,7 @@ const Landing = () => {
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ type: "spring", duration: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.1 }}
           className="u-margin-top-small"
         >
           <div className="u-center-text p-padding-bottom-big">
@@ -68,19 +68,19 @@ const Landing = () => {
               Dergimize Yazar Olun !
             </h2>
             <p className="paragraph--parsed">
-              İlgi duyduğun ve hakkında bilgi sahibi olduğun bir alan veya alanlar var ise , bu alanlar üzerinde özgün fikirlere sahibim de diyorsan eğer seni aramızda görmeyi çok isteriz. Üzerinde durmak istediğin veya yazmak istediğin konular hakkında uzman olman , çok okumuş olman veya çok pratik yapmış olman bizim için şart değil ancak eleştiriye açık olman , fikirlerinde dürüst olman, özgürlükçü bir zihniyete sahip olman ve her görüşe saygı duyman bizim senden mutlak beklentilerimizdir.    
+              İlgi duyduğun ve hakkında bilgi sahibi olduğun bir alan veya alanlar var ise ve bu alanlar üzerinde özgün fikirlere sahibim de diyorsan eğer seni aramızda görmeyi çok isteriz. Üzerinde durmak istediğin veya yazmak istediğin konular hakkında uzman olman , çok okumuş olman veya çok pratik yapmış olman bizim için şart değil ancak eleştiriye açık olman , fikirlerinde dürüst olman, özgürlükçü bir zihniyete sahip olman ve her görüşe saygı duyman bizim senden mutlak beklentilerimizdir.    
             </p>
             <h2 className="heading-secondary p-padding-bottom-big">
               Format
             </h2>
             <p className="paragraph--parsed">
-              Dergimizin formatını, amatör ve öğrenmeye açık yazarlarımızın bilgilerini , düşüncelerini ve vizyonlarını geliştirmeye yönelik olması zımnında çalışmak temel gayemizdir. Bu hedef yolunda öncelikli olarak dergiye , sosyal medya uygulamalarında da gördüğümüz , yorum ekleme ve beğenme butonu ekledik. Yazar sayımıza da kota ekledik. Kota koymadaki ana nedenlerimizi öncelikli olarak yazarlara ücret vermek(tabi ki bu dergi para kazanmaya başladıktan sonra olacak) ve sonrasında yazar veya yazar adayları arasındaki rekabeti arttırmak olarak sıralayabiliriz. Bunun yanı sıra , genç ve amatör yazarlarımıza ilham olması , onlarla iletişime geçip onlara tavsiyelerde bulunması ve beklenildiği gibi dergimize kalite katması için alanında uzman hocalarımızı da dergiye kazandırmaya çalışacağız.     
+              Dergimizin formatını, amatör ve öğrenmeye açık yazarlarımızın bilgilerini çoğaltmaya , düşüncelerini ve vizyonlarını geliştirmeye yönelik olması zımnında çalışmak temel gayemizdir. Bu hedef yolunda öncelikli olarak dergiye , sosyal medya uygulamalarında da gördüğümüz , yorum ekleme ve beğeni butonu ekledik. Yazar sayımıza da kota ekledik. Kota koymadaki ana nedenlerimizi öncelikli olarak yazarlara ücret vermek(tabi ki bu dergi gelir elde etmeye başladıktan sonra olacak) ve sonrasında yazar veya yazar adayları arasındaki rekabeti arttırmak olarak sıralayabiliriz. Bunun yanı sıra , genç ve amatör yazarlarımıza ilham olması , onlarla iletişime geçip onlara tavsiyelerde bulunması ve beklenildiği gibi dergimize kalite katması için alanında uzman hocalarımızı da dergiye kazandırmaya çalışacağız.     
             </p>
             <h2 className="heading-secondary p-padding-bottom-big">
               Yazar Adayları
             </h2>
             <p className="paragraph--parsed">
-              Dergimize yazar olmanın birkaç yolu vardır. Bunlardan birini formattan da anlayabileceğiniz üzere dergiye üye olduktan sonra mevcut olan yazarlarımızın yazılarına yaptığınız yorumlarınızın aldığı etkileşimler üzerine yazar olmaya hak kazanmanız olarak açıklayabiliriz. Eğer yazar kotamız dolu ve yorumlarınız da oldukça etkileşim yani beğeni alıyorsa , sizi mevcut yazarlarımızdan en az ilgi gören , en az okunan veya en pasif olan biriyle , sizinle kıyas yaptıktan sonra , takas yapma durumu ortaya çıkabilir ve sonuç olarak yazar olma şansınız hiçbir engelle karşılaşmadan devam eder.       
+              Dergimize yazar olmanın birkaç yolu vardır. Bunlardan birini formattan da anlayabileceğiniz üzere dergiye üye olduktan sonra mevcut olan yazarlarımızın yazılarına yaptığınız yorumlarınızın aldığı etkileşimler üzerine yazar olmaya hak kazanmanız olarak açıklayabiliriz. Eğer yazar kotamız dolu ve yorumlarınız da oldukça etkileşim yani beğeni alıyorsa , sizi mevcut yazarlarımızdan en az ilgi gören , en az okunan veya en pasif olan biriyle , sizinle kıyas yaptıktan sonra , takas yapma durumu ortaya çıkabilir ve sonuç olarak yazar olma şansınız hiçbir engelle karşılaşmadan devam eder. Bir diğer yol ise sosyal medyada veya başka mecralarda , yazılarıyla veya söylemleriyle dikkatimizi çekmeyi başaran insanlara göndereceğimiz davetlerdir. Yazar olmanın bir başka yöntemi ise bizimle iletişime geçip , örnek olarak gösterebileceğiniz bir yazıyı tarafımıza göndermeniz ve bu yazının , tarafımızca iyi analiz edilip , kabul gördükten sonra yazar olarak kabul edilmenizdir. Bu yol yazar olmanın en kestirme yoludur.       
             </p>
           </div>
         </motion.div>
@@ -97,7 +97,7 @@ const Landing = () => {
             <Grid2 container spacing={4} sx={{ mb: 5 }}>
               <Grid2 xs={12} md={6}>
                 <p className="paragraph--parsed">
-                  Hukuktan siyasete , spordan magazine , sanattan bilime , astrolojiden yemeğe , animeden tiyatroya , Mars'tan Antik Mısır'a aklınıza gelebilecek her konuda , Sünni , Şii , Ateist , Deist , Alevi , Kürt , Ermeni , Yahudi , Çerkes kimliğiniz , ırkınız hiç farketmeden istediğiniz ve hakkında yazabileceğinizi düşündüğünüz her kategori de yazabilirsiniz. Eleştiriye açık olmayı unutmayın ancak :))   
+                  Hukuktan siyasete , spordan magazine , sanattan bilime , astrolojiden yemeğe , animeden tiyatroya , Mars'tan Antik Mısır'a aklınıza gelebilecek her konuda , Sünni , Şii , Ateist , Deist , Alevi , Kürt , Ermeni , Yahudi veya Çerkes , kimliğiniz ve ırkınız hiç farketmeden istediğiniz ve hakkında yazabileceğinizi düşündüğünüz her kategoride yazabilirsiniz. Eleştirilere açık olmayı unutmayın ancak &#128516;  
                 </p>
               </Grid2>
               <Grid2 xs={12} md={6}>

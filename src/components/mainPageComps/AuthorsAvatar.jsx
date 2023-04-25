@@ -20,7 +20,7 @@ const AuthorsAvatar = () => {
               sx={{ m: 1 }}
             >
               <Avatar
-                src={`${BASE_URL}${photosApiUrl}/${author?.image}`}
+                src={author?.image && `${BASE_URL}${photosApiUrl}/${author?.image}`}
                 {...stringAvatar(author?.username.toUpperCase())}
                 sx={{
                   width: 50,
@@ -28,7 +28,7 @@ const AuthorsAvatar = () => {
                   border: "2px outset #144598df",
                   fontSize: 30,
                   ":hover": {
-                    transform: "scale(1.1)",
+                    transform: "scale(1.07)",
                     transition: "ease-in-out .2s",
                   },
                 }}

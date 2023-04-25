@@ -8,7 +8,7 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 import { stringAvatar } from "../../utils/CustomProfileImage";
 
 const ProfileCard = ({ author, bgImage }) => {
-  const photoImage = `${BASE_URL}${photosApiUrl}/${author?.image}`;
+  const photoImage =  author?.image &&`${BASE_URL}${photosApiUrl}/${author?.image}`;
 
   const bgStyle = {
     backgroundImage: `url(${author?.image ? photoImage : bgImage})`,

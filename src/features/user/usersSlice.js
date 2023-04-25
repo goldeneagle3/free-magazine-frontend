@@ -2,6 +2,10 @@ import { apiSlice } from "../api/apiSlice";
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    getAllUsers: builder.query({
+      query: () => ({ url: "/authors/getAllUsers", method: "get" }),
+      providesTags: [{ type: "User", id: "LIST" }],
+    }),
     getUsers: builder.query({
       query: () => ({ url: "/authors/getUsers", method: "get" }),
       providesTags: [{ type: "User", id: "LIST" }],
@@ -15,11 +19,11 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: "/authors/getAuthorsForCard",
         method: "get",
       }),
-      providesTags: [{ type: "Post", id: "List" }],
+      providesTags: [{ type: "User", id: "LIST" }],
     }),
     getAuthorBy: builder.query({
       query: (username) => ({
-        url: `/authors/getUserById/${username}`,
+        url: `/authors/getUserByUsername/${username}`,
         method: "get",
       }),
       providesTags: [{ type: "User", id: "LIST" }],
@@ -40,24 +44,41 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: "/authors/makeAuthor/" + userId,
         method: "put",
       }),
-      invalidatesTags: [{ type: "USER", id: "LIST" }],
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    unMakeAuthor: builder.mutation({
+      query: (userId) => ({
+        url: "/authors/unMakeAuthor/" + userId,
+        method: "put",
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
     }),
     makeEditor: builder.mutation({
       query: (userId) => ({
         url: "/authors/makeEditor/" + userId,
         method: "put",
       }),
-      invalidatesTags: [{ type: "USER", id: "LIST" }],
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    unMakeEditor: builder.mutation({
+      query: (userId) => ({
+        url: "/authors/unMakeEditor/" + userId,
+        method: "put",
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
     }),
   }),
 });
 
 export const {
+  useGetAllUsersQuery,
   useGetUsersQuery,
   useGetAuthorsQuery,
   useGetAuhorsForCardQuery,
   useGetAuthorByQuery,
   useUpdateUserMutation,
   useMakeAuthorMutation,
+  useUnMakeAuthorMutation,
   useMakeEditorMutation,
+  useUnMakeEditorMutation,
 } = usersApiSlice;

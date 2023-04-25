@@ -111,6 +111,30 @@ export const postsApiSlice = apiSlice.injectEndpoints({
         },
       ],
     }),
+    getPostsBySubCategory: builder.query({
+      query: (subCategory) => ({
+        url: `/posts/getPostBySubCategory/${subCategory.toString()}`,
+        method: "get",
+      }),
+      transformResponse: async (responseData) => {
+        const posts = await Promise.all(
+          responseData?.map(async (p) => {
+            await axiosPublic
+              .get("/likes/likedUsersByPost/" + p?.id)
+              .then((resp) => (p.likes = resp?.data))
+              .catch((err) => console.log(err));
+            return p;
+          })
+        );
+        return posts;
+      },
+      providesTags: [
+        {
+          type: "Post",
+          id: "LIST",
+        },
+      ],
+    }),
     getPostsByAuthor: builder.query({
       query: (username) => ({
         url: `/posts/getPostsByAuthor/${username}`,
@@ -215,6 +239,7 @@ export const {
   useGetPostByIdQuery,
   useGetThreeRandomPostsQuery,
   useGetPostsByCategoryQuery,
+  useGetPostsBySubCategoryQuery,
   useGetPostsByAuthorQuery,
   useGetDeactivatedPostsQuery,
   useAddPostMutation,

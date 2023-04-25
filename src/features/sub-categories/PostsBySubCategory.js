@@ -1,23 +1,19 @@
-import { useGetPostsQuery } from "./postSlice";
-import ExPostCard from "../../external_components/posts/ExPostCard";
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import PostCard from "../../components/post-card/PostCard";
-import MainLoadingComp from "../../components/loading/MainLoadingComp";
-import ResourceNotFound from "../../components/error/ResourceNotFound";
+import React from "react";
+import { useTheme, useMediaQuery, Grid } from "@mui/material";
 
-const PostsList = ({ propData }) => {
+import MainLoadingComp from "../../components/loading/MainLoadingComp";
+import PostCard from "../../components/post-card/PostCard";
+import ExPostCard from "../../external_components/posts/ExPostCard";
+import NoPostInList from "../../components/error/NoPostInList";
+import ResourceNotFound from "../../components/error/ResourceNotFound";
+import { useGetPostsBySubCategoryQuery } from "../posts/postSlice";
+
+const PostsBySubCategory = ({ subCategory }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("lg"));
   const matchesTab = useMediaQuery(theme.breakpoints.between("sm", "md"));
-  const {
-    data: allPost,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetPostsQuery();
-
-  const data = propData ? propData : allPost;
+  const { data, isLoading, isSuccess, isError, error } =
+    useGetPostsBySubCategoryQuery(subCategory);
 
   let content;
   if (isLoading) {
@@ -27,7 +23,7 @@ const PostsList = ({ propData }) => {
   } else if (isSuccess) {
     if (matches) {
       if (data?.length === 0) {
-        content = "";
+        content = <NoPostInList />;
       } else {
         content = data.map((post) => <ExPostCard key={post.id} post={post} />);
       }
@@ -43,7 +39,7 @@ const PostsList = ({ propData }) => {
       );
     } else {
       if (data?.length < 1) {
-        content = "";
+        content = <NoPostInList />;
       } else {
         content = data.map((post) => <PostCard key={post.id} post={post} />);
       }
@@ -52,4 +48,5 @@ const PostsList = ({ propData }) => {
 
   return <>{content}</>;
 };
-export default PostsList;
+
+export default PostsBySubCategory;

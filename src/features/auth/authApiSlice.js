@@ -27,7 +27,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: "/auth/signout",
         method: "POST",
       }),
-      invalidatesTags: [{ type: "Post", id: "LIST" }],
     }),
   }),
 });

@@ -1,6 +1,14 @@
 import React from "react";
 import "../../styles/sass/main.scss";
-import { Avatar, Box, IconButton, Popover, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  IconButton,
+  Popover,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { AiOutlineComment } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -18,8 +26,9 @@ import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 export default function ExPostCard({ post }) {
   const userRoles = useSelector(selectCurrentUserRoles);
-  const postImage = `${BASE_URL}${photosApiUrl}/${post?.image}`;
-  const userImage = `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
+  const postImage = post?.image && `${BASE_URL}${photosApiUrl}/${post?.image}`;
+  const userImage =
+    post?.profileImage && `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -116,7 +125,13 @@ export default function ExPostCard({ post }) {
           </Box>
 
           <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-            <Typography variant="h5">{post.category}</Typography>
+            <Stack>
+              <Link to={`/posts/category/${post?.category}`}>
+                <Typography variant="p">{post?.category}</Typography>
+              </Link>
+              <Divider />
+              <Typography variant="p">{post?.subCategory}</Typography>
+            </Stack>
             {isEditor(userRoles) && (
               <>
                 <IconButton
@@ -200,8 +215,8 @@ export default function ExPostCard({ post }) {
             gridArea: "footer",
             display: "flex",
             justifyContent: "space-between",
-            pt: 1.7,
-            pb: 1.8,
+            // pt: { xs: 0, lg: 1.7 },
+            pb: 2,
             color: "black",
           }}
         >

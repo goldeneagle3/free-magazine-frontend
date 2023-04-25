@@ -162,22 +162,16 @@ export default function Navbar(props) {
               ))}
           </List>
         </Collapse>
-        <Link to="/posts">
-          <ListItemButton
-            sx={{
-              textAlign: "center",
-              bgcolor: "#073b6b",
-              color: "#f4f2f2",
-              ":hover": {
-                bgcolor: "#f4f2f2",
-                color: "#073b6b",
-                borderRadius: "2%",
-              },
-            }}
-          >
+        <ListItemButton
+          sx={{
+            textAlign: "center",
+            color: "#073b6b",
+          }}
+        >
+          <Link to="/posts">
             <ListItemText primary="Tüm Yazılar!" />
-          </ListItemButton>
-        </Link>
+          </Link>
+        </ListItemButton>
 
         {authUser ? (
           <ListItemButton
@@ -199,7 +193,9 @@ export default function Navbar(props) {
           >
             <ListItemAvatar>
               <Avatar
-                src={`${BASE_URL}${photosApiUrl}/${authUserImage}`}
+                src={
+                  authUserImage && `${BASE_URL}${photosApiUrl}/${authUserImage}`
+                }
                 {...stringAvatar(authUser.toUpperCase())}
               />
             </ListItemAvatar>

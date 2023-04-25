@@ -2,7 +2,6 @@ import React from "react";
 import { Quill } from "react-quill";
 import "./quill-font.css";
 
-
 // Custom Undo button icon component for Quill editor. You can import it directly
 // from 'quill/assets/icons/undo.svg' but I found that a number of loaders do not
 // handle them correctly
@@ -42,11 +41,7 @@ Quill.register(Size, true);
 
 // Add fonts to whitelist and register them
 const Font = Quill.import("formats/font");
-Font.whitelist = [
-  "arial",
-  "poppins",
-  "raleway",
-];
+Font.whitelist = ["arial", "poppins", "raleway"];
 Quill.register(Font, true);
 
 // Modules object for setting up the Quill editor
@@ -83,6 +78,7 @@ export const formats = [
   "indent",
   "link",
   "image",
+  "video",
   "color",
   "code-block",
 ];

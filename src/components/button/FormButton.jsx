@@ -7,12 +7,14 @@ export default function FormButton({
   color,
   bgcolor,
   width,
-  isDisabled
+  isDisabled,
+  onClick
 }) {
   const theme = useTheme();
 
   return (
     <Button
+      onClick={onClick}
       component={motion.button}
       whileHover={{
         scale: 1.04,

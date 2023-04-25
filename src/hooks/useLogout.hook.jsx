@@ -10,9 +10,9 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      await signOutFunc();
       dispatch(logOut());
       Cookies.remove(rememberCookie);
+      await signOutFunc();
     } catch (err) {
       console.error(err);
     }

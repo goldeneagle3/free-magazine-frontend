@@ -5,7 +5,7 @@ import "./../../styles/sass/main.scss";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const ProfileBox = ({ user }) => {
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${user?.image}`;
+  const imageUrl = user?.image && `${BASE_URL}${photosApiUrl}/${user?.image}`;
   return (
     <div className="profile">
       <div className="profile__box">
@@ -30,8 +30,7 @@ const ProfileBox = ({ user }) => {
             {(user?.firstName || user?.lastName) && (
               <h5 className="heading-tertiary">
                 {user.username &&
-                  user?.firstName + " " + user?.lastName + " / "}
-                Yazar
+                  user?.firstName + " " + user?.lastName }
               </h5>
             )}
           </Box>

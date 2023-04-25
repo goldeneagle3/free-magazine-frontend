@@ -27,6 +27,7 @@ import EditorToolbar, {
 import MainLoadingComp from "../loading/MainLoadingComp";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
 import userInput from "./../../hooks/user.input.hook";
+import { useGetSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
 
 const EditorNewPostComp = () => {
   const navigate = useNavigate();
@@ -48,6 +49,14 @@ const EditorNewPostComp = () => {
   const [progress, setProgress] = React.useState(false);
   const [error, setError] = React.useState("");
   const [content, setContent] = React.useState("");
+
+  const { data: subCategories } = useGetSubCategoriesByCategoryQuery(category, {
+    skip: false,
+  });
+  const [subCtgValue, setSubCtgValue] = React.useState(
+    subCategories ? subCategories[subCategories?.length - 1]?.name : null
+  );
+  const [subCategory, setSubCategory] = React.useState("");
 
   const {
     text: photo,
@@ -80,17 +89,30 @@ const EditorNewPostComp = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (category === "" || subCategory === "") {
+      setError("Lütfen bir kategori ve ona ait bir alt kategori seçiniz.");
+      setOpen(true);
+      return;
+    }
+
     if (titleHasError) return;
 
     if (!validateContentLength(content)) {
       return;
     }
 
+    if (photo === "") {
+      setError("Lütfen bir resim ekleyiniz.");
+      setOpen(true);
+      return;
+    };
+
     setProgress(true);
 
     let newPost = new FormData();
 
     category && newPost.append("category", category);
+    subCategory && newPost.append("subCategory", subCategory);
     author && newPost.append("author", author);
     photo && newPost.append("image", photo);
     content && newPost.append("content", content);
@@ -135,6 +157,29 @@ const EditorNewPostComp = () => {
               id="category"
               label="Kategori"
               placeholder="Kategori Seç"
+              fullWidth
+              {...params}
+            />
+          )}
+        />
+        <Autocomplete
+          disablePortal
+          id="subCategory"
+          value={subCtgValue}
+          onChange={(event, newValue) => {
+            setSubCtgValue(newValue);
+          }}
+          inputValue={subCategory}
+          onInputChange={(event, newInputValue) => {
+            setSubCategory(newInputValue);
+          }}
+          options={subCategories?.map((c) => c.name).sort()}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField
+              id="subCategory"
+              label="Alt Kategori"
+              placeholder="Alt Kategori Seç"
               fullWidth
               {...params}
             />

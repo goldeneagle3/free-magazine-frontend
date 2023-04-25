@@ -31,6 +31,7 @@ import FormField from "../form/FormField";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
 import { useNavigate } from "react-router-dom";
+import { useGetSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
 
 const EditPostComp = ({ postId }) => {
   const navigate = useNavigate();
@@ -49,10 +50,18 @@ const EditPostComp = ({ postId }) => {
     subtitle: data?.subtitle,
     imageProtect: true,
   });
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(data?.category ? data.category : "");
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(false);
   const [content, setContent] = useState(data?.content);
+
+  const { data: subCategories } = useGetSubCategoriesByCategoryQuery(category, {
+    skip: false,
+  });
+  const [subCtgValue, setSubCtgValue] = React.useState(
+    subCategories ? subCategories[subCategories?.length - 1].name : null
+  );
+  const [subCategory, setSubCategory] = React.useState(data?.subCategory ? data.subCategory : "");
 
   const handleImageControlChange = (event) => {
     setValues({ ...values, imageProtect: !imageProtect });
@@ -84,6 +93,7 @@ const EditPostComp = ({ postId }) => {
     let newPost = new FormData();
 
     category && newPost.append("category", category);
+    subCategory && newPost.append("subCategory", subCategory);
     image && newPost.append("image", image);
     content && newPost.append("content", content);
     title && newPost.append("title", title);
@@ -130,6 +140,29 @@ const EditPostComp = ({ postId }) => {
               id="category"
               label="Kategori"
               placeHolder="Kategori Seç"
+              fullWidth
+              {...params}
+            />
+          )}
+        />
+        <Autocomplete
+          disablePortal
+          id="subCategory"
+          value={subCtgValue}
+          onChange={(event, newValue) => {
+            setSubCtgValue(newValue);
+          }}
+          inputValue={subCategory}
+          onInputChange={(event, newInputValue) => {
+            setSubCategory(newInputValue);
+          }}
+          options={subCategories?.map((c) => c.name).sort()}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField
+              id="subCategory"
+              label="Alt Kategori"
+              placeholder="Alt Kategori Seç"
               fullWidth
               {...params}
             />

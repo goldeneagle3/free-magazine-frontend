@@ -42,7 +42,7 @@
     display: inline-block;
 
     &:not(:last-child) {
-      margin-right: 1.3rem;
+      margin-right: 1.1rem;
     }
   }
 
@@ -57,7 +57,7 @@
       transition: all 0.2s;
 
       @include respond(tab-port) {
-        font-size: 1rem;
+        font-size: .8rem;
       }
     }
 

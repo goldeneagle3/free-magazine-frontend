@@ -39,3 +39,7 @@ export const validateDescriptionLength = (text) => {
 export const validateCommentLength = (text) => {
   return _validateLength(text, { max: 250 });
 };
+
+export const validateSubCategoryLength = (text) => {
+  return _validateLength(text, { min: 2, max: 25 });
+};

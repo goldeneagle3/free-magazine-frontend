@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BsFacebook, BsTwitter, BsYoutube } from "react-icons/bs";
+import { BsDiagram3, BsFacebook, BsTwitter, BsYoutube } from "react-icons/bs";
 import { AiFillInstagram, AiOutlineLogout } from "react-icons/ai";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
@@ -32,6 +32,7 @@ import {
 import useLogout from "../../hooks/useLogout.hook";
 import { stringAvatar } from "../../utils/CustomProfileImage";
 import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
+import { useGetActiveSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
 
 const pages = [
   { id: 0, pageName: "/posts", navName: "Tüm Yazıları Gör" },
@@ -40,22 +41,34 @@ const pages = [
 
 const DesktopNavbar = () => {
   const colors = {
-    navButtonColor: "#073b6b",
+    navButtonColor: "#04203b",
   };
   const navigate = useNavigate();
+  const { categoryName } = useParams();
+
   const username = useSelector(selectCurrentUsername);
   const userRoles = useSelector(selectCurrentUserRoles);
   const image = useSelector(selectCurrentImage);
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
   const signOut = useLogout();
+
   const { data: categories } = useGetCategoriesQuery();
+  const { data: subCategories } = useGetActiveSubCategoriesByCategoryQuery(
+    categoryName,
+    {
+      skip: categoryName ? false : true,
+    }
+  );
 
   const items = categories && [...categories];
   items?.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
 
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${image}`;
+  const imageUrl = image && `${BASE_URL}${photosApiUrl}/${image}`;
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -115,11 +128,11 @@ const DesktopNavbar = () => {
                   fontSize: "1.1rem",
                   fontWeight: "900",
                   my: 2,
-                  color: colors.navButtonColor,
+                  color: theme.palette.primary.dark,
                   fontSizeAdjust: "inherit",
                   display: "block",
                   ":hover": {
-                    bgcolor: "#8baeeb",
+                    bgcolor: theme.palette.primary.light,
                   },
                 }}
               >
@@ -140,19 +153,19 @@ const DesktopNavbar = () => {
               direction="row"
               spacing={2}
               alignItems="center"
-              sx={{ mt: 1, mx: 3, color: colors.navButtonColor }}
+              sx={{ mt: 1, mx: 3 }}
             >
               <a href="https://www.facebook.com">
-                <BsFacebook size={20} />
+                <BsFacebook size={20} color={theme.palette.primary.dark} />
               </a>
               <a href="https://www.instagram.com">
-                <AiFillInstagram size={20} />
+                <AiFillInstagram size={20} color={theme.palette.primary.dark} />
               </a>
               <a href="https://twitter.com">
-                <BsTwitter size={20} />
+                <BsTwitter size={20} color={theme.palette.primary.dark} />
               </a>
               <a href="https://youtube.com">
-                <BsYoutube size={20} />
+                <BsYoutube size={20} color={theme.palette.primary.dark} />
               </a>
             </Stack>
             {username ? (
@@ -166,7 +179,13 @@ const DesktopNavbar = () => {
                     {...stringAvatar(username.toUpperCase())}
                     src={imageUrl}
                   />
-                  <Typography sx={{ color: colors.navButtonColor }}>
+                  <Typography
+                    sx={{
+                      color: theme.palette.primary.dark,
+                      fontWeight: 700,
+                      letterSpacing: "1px",
+                    }}
+                  >
                     {username}
                   </Typography>
                 </Button>
@@ -280,7 +299,6 @@ const DesktopNavbar = () => {
               md: "0 3rem",
             },
             bgcolor: "white",
-            borderRadius: "15px",
           }}
         >
           <Box
@@ -300,22 +318,24 @@ const DesktopNavbar = () => {
                 component={NavLink}
                 to={`/posts/category/${category?.name}`}
                 sx={{
+                  borderRadius: 0,
                   mx: { md: 1, lg: 2 },
+                  borderRight: "2px solid black",
                   my: 1,
                   px: 1,
                   fontSize: "1.3rem",
                   fontWeight: "900",
-                  color: colors.navButtonColor,
+                  color: theme.palette.primary.dark,
                   display: "block",
                   "&.active": {
-                    color:"#8baeeb",
-                    bgcolor: "#082659",
+                    color: theme.palette.primary.light,
+                    bgcolor: theme.palette.primary.dark,
                   },
                   ":hover": {
-                    color: "#082659",
-                    bgcolor: "#8baeeb",
-                    borderBottom: "1px solid #082659",
-                    borderRight: "2px solid #082659",
+                    color: theme.palette.primary.dark,
+                    bgcolor: theme.palette.primary.light,
+                    borderBottom: "1px solid black",
+                    borderRight: "2px solid black",
                   },
                 }}
               >
@@ -324,6 +344,71 @@ const DesktopNavbar = () => {
             ))}
           </Box>
         </Toolbar>
+
+        {subCategories?.length > 0 && (
+          <Toolbar
+            disableGutters
+            sx={{
+              p: 0,
+              m: {
+                lg: "0 18rem",
+                md: "0 9rem",
+              },
+              bgcolor: "#cccccc31",
+              position: "relative",
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                left: "2%",
+                top: "20%",
+                fontWeight: 900,
+              }}
+            >
+              <BsDiagram3 size={30} color="black" />
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                mx: 1,
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {subCategories?.map((subCategory) => (
+                <Button
+                  key={subCategory?.id}
+                  component={NavLink}
+                  to={`/posts/category/${categoryName}/subCategory/${subCategory?.id}`}
+                  sx={{
+                    mx: { md: 1, lg: 1 },
+                    my: 1,
+                    px: 1,
+                    fontSize: ".9rem",
+                    fontWeight: "700",
+                    color: colors.navButtonColor,
+
+                    display: "block",
+                    "&.active": {
+                      color: "#9ad8eb",
+                      bgcolor: "#044458",
+                    },
+                    ":hover": {
+                      borderRadius: 0,
+                      borderBottom: "1px solid #0a5a15",
+                    },
+                  }}
+                >
+                  {subCategory?.name}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        )}
       </Container>
     </AppBar>
   );

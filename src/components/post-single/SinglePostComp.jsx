@@ -25,7 +25,7 @@ const SinglePostComp = ({ post, comments }) => {
   const navigate = useNavigate();
   const username = useSelector(selectCurrentUsername);
   const [deletePost, { isLoading }] = useDeactivatePostMutation();
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
+  const imageUrl = post?.profileImage && `${BASE_URL}${photosApiUrl}/${post?.profileImage}`;
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -103,7 +103,9 @@ const SinglePostComp = ({ post, comments }) => {
             <h4 className="heading-tertiary">{post?.username}</h4>
           </Link>
           <Link to={`/posts/category/${post?.category}`}>
-            <Typography variant="h6">{post?.category}</Typography>
+            <Typography variant="h6">
+              {post?.category + " / " + post?.subCategory}
+            </Typography>
           </Link>
         </Stack>
       </Box>

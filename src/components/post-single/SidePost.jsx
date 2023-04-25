@@ -13,7 +13,7 @@ const Img = styled("img")({
 });
 
 const SidePost = ({ post }) => {
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${post?.image}`;
+  const imageUrl = post?.image && `${BASE_URL}${photosApiUrl}/${post?.image}`;
 
   return (
     <Paper
@@ -77,7 +77,6 @@ const SidePost = ({ post }) => {
           </Grid>
         </Box>
       </Box>
-      <Divider />
     </Paper>
   );
 };

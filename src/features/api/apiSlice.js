@@ -50,7 +50,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
               username: refreshResult?.data?.username,
               userRoles: refreshResult?.data?.roles,
               image: refreshResult?.data?.image,
-              imageExist: refreshResult?.data?.mimType,
             })
           );
           // retry the initial query
@@ -75,6 +74,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   reducerPath: "api", // optional
   baseQuery: baseQueryWithReauth,
-  tagTypes: ["Post", "User", "Category", "Comment"],
+  tagTypes: ["Post", "User", "Category", "Comment", "Contact", "SubCategory"],
   endpoints: (builder) => ({}),
 });

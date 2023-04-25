@@ -13,14 +13,16 @@ import {
 } from "../../features/user/usersSlice";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 import { selectCurrentUsername } from "../../features/auth/authSlice";
+import ResourceNotFound from "../error/ResourceNotFound";
 
 const EditUserComp = ({ username }) => {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUsername);
   const { data, isLoading } = useGetAuthorByQuery(username);
+
   const [updateUserFn, { isLoading: usrLoading, isError, error }] =
     useUpdateUserMutation();
-  const photoImage = `${BASE_URL}${photosApiUrl}/${data?.image}`;
+  const photoImage = data?.image && `${BASE_URL}${photosApiUrl}/${data?.image}`;
   const [values, setValues] = useState({
     firstName: data?.firstName,
     lastName: data?.lastName,
@@ -28,6 +30,9 @@ const EditUserComp = ({ username }) => {
     image: "",
     imageProtect: true,
   });
+
+  const { firstName, lastName, description, image, imageProtect } = values;
+
 
   if (!isLoading && currentUser !== data?.username) {
     return <Navigate to="/posts" />;
@@ -47,6 +52,10 @@ const EditUserComp = ({ username }) => {
 
     const { firstName, lastName, description, image, imageProtect } = values;
 
+    if (!imageProtect && image === null) {
+      return;
+    }
+
     let newUser = new FormData();
 
     firstName && newUser.append("firstName", firstName);
@@ -65,8 +74,6 @@ const EditUserComp = ({ username }) => {
       navigate("/users/" + resp.data?.username);
     }
   };
-
-  const { firstName, lastName, description, image, imageProtect } = values;
 
   return (
     <form onSubmit={onSubmitHandler}>
@@ -133,7 +140,7 @@ const EditUserComp = ({ username }) => {
           width={100}
           isDisabled={usrLoading || isLoading}
         />
-        {isError && <Typography>{error}</Typography>}
+        {isError && <ResourceNotFound isError={isError} error={error} />}
       </Stack>
     </form>
   );

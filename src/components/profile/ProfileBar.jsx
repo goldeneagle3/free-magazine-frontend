@@ -40,7 +40,7 @@ const ProfileBar = ({ user, image }) => {
     navigate("/");
   };
 
-  const imageUrl = `${BASE_URL}${photosApiUrl}/${image}`;
+  const imageUrl = image && `${BASE_URL}${photosApiUrl}/${image}`;
 
   return (
     <Stack spacing={3} sx={{ mb: 6 }}>

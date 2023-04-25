@@ -7,6 +7,7 @@ import { MdEmail, MdPhone } from "react-icons/md";
 import Logo from "./../../assets/img/logodnm4.png";
 import "./../../styles/sass/main.scss";
 import { BRAND } from "../../config/constants";
+import { shortIntroText } from "../../utils/shortIntroText";
 
 const Footer = () => {
   return (
@@ -76,18 +77,11 @@ const Footer = () => {
             </div>
           </Grid>
           <Grid xs={12} md={6}>
-            <p className="footer__copyright">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              reprehenderit, autem unde voluptate voluptatibus eaque id aliquam
-              iste aut excepturi minus a. Incidunt provident modi tenetur error
-              nam consequuntur quibusdam, cumque quidem unde repellendus,
-              impedit voluptates, quod quam architecto ut vitae! Quam incidunt
-              quidem ad explicabo alias quos, quisquam autem!
-            </p>
+            <p className="footer__copyright">{shortIntroText}</p>
           </Grid>
         </Grid>
         <Box sx={{ mt: 3, mb: 0, pb: 0 }}>
-          <p>{BRAND} 0.0.1</p>
+          <p style={{ color: "#af70ee" }}>{BRAND} 0.0.1</p>
         </Box>
       </Container>
     </footer>

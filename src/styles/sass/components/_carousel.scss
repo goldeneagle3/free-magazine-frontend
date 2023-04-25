@@ -2,12 +2,27 @@
   &__body {
     &__title {
       position: absolute;
-      bottom: 1rem;
+      bottom: 3rem;
       left: 1rem;
       padding: 1rem;
+      font-size: 1.5rem;
       border-radius: 9px;
       background-color: rgba(0, 0, 0, 0.675);
       color: whitesmoke;
+      font-family: "Poppins", sans-serif;
+
+      @include respond(phone) {
+        font-size: 1rem;
+      }
+    }
+
+    &__avatar {
+      position: absolute;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      top: 1rem;
+      right: 1rem;
     }
   }
 }

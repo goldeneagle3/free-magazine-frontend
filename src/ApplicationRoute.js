@@ -26,6 +26,7 @@ import DeactivatedPosts from "./pages/DeactivatedPosts";
 import Contact from "./pages/Contact";
 import Mail from "./pages/Mail";
 import SingleMail from "./pages/SingleMail";
+import PostsBySubCategoryPage from "./pages/PostsBySubCategoryPage";
 
 const ROLES = {
   User: "ROLE_USER",
@@ -77,10 +78,13 @@ const ApplicationRoute = () => {
                   </RequireAuth>
                 }
               />
-              <Route
-                path="category/:categoryName"
-                element={<PostsByCategoryPage />}
-              />
+              <Route path="category">
+                <Route path=":categoryName" element={<PostsByCategoryPage />} />
+                <Route
+                  path=":categoryName/subCategory/:subCategoryId"
+                  element={<PostsBySubCategoryPage />}
+                />
+              </Route>
             </Route>
             <Route path="/users">
               <Route path=":username" element={<Profile />} />
