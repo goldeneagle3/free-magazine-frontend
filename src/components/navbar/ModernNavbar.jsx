@@ -132,7 +132,7 @@ const ModernNavbar = () => {
         </BootstrapTooltip>
 
         {/* Categories */}
-        <BootstrapTooltip title="Categoriler" placement="right">
+        <BootstrapTooltip title="Kategoriler" placement="right">
           <IconButton
             onClick={handleCategoryClick}
             aria-controls={categoryOpen ? "categories" : undefined}

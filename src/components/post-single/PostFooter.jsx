@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import moment from "moment/moment";
-import 'moment/locale/tr' 
+import "moment/locale/tr";
 
 import "./../../styles/sass/main.scss";
 import { useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import { selectCurrentUsername } from "../../features/auth/authSlice";
 import { useLikePostMutation } from "../../features/posts/postSlice";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
 
-const PostFooter = ({ postId, likes, comments,createDateTime }) => {
+const PostFooter = ({ postId, likes, comments, createDateTime }) => {
   const user = useSelector(selectCurrentUsername);
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");

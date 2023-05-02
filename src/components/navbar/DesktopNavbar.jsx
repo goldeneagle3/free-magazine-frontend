@@ -40,9 +40,6 @@ const pages = [
 ];
 
 const DesktopNavbar = () => {
-  const colors = {
-    navButtonColor: "#04203b",
-  };
   const navigate = useNavigate();
   const { categoryName } = useParams();
 
@@ -114,7 +111,10 @@ const DesktopNavbar = () => {
           }}
         >
           <Avatar src={Logo} sx={{ maxWidth: "100%", height: "auto" }} />
-          <Link to="/home" style={{ marginLeft: "1rem", color: "inherit" }}>
+          <Link
+            to="/home"
+            style={{ marginLeft: "1rem", color: theme.palette.primary.main }}
+          >
             <h3 className="list-header">{BRAND}</h3>
           </Link>
           <Box sx={{ flexGrow: 1, display: "flex", mx: 3 }}>
@@ -325,6 +325,7 @@ const DesktopNavbar = () => {
                   px: 1,
                   fontSize: "1.3rem",
                   fontWeight: "900",
+                  fontFamily: '"Montserrat", sans-serif',
                   color: theme.palette.primary.dark,
                   display: "block",
                   "&.active": {
@@ -390,7 +391,7 @@ const DesktopNavbar = () => {
                     px: 1,
                     fontSize: ".9rem",
                     fontWeight: "700",
-                    color: colors.navButtonColor,
+                    color: theme.palette.primary.dark,
 
                     display: "block",
                     "&.active": {

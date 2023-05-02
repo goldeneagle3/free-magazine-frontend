@@ -104,7 +104,7 @@ export default function Navbar(props) {
           variant="h6"
           noWrap
           component="div"
-          sx={{ display: "flex", color: "#073b6b" }}
+          sx={{ display: "flex", color: theme.palette.primary.main }}
         >
           {BRAND}
         </Typography>

@@ -95,7 +95,7 @@ const SignUpForm = () => {
 
     if (password !== confirmPassword) {
       setErrMsg("Şifreler eşleşmiyor");
-      setOpen(true);
+      // setOpen(true);
       return;
     }
 

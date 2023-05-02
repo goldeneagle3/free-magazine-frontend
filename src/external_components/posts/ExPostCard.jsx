@@ -42,7 +42,7 @@ export default function ExPostCard({ post }) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const text2 = post?.content?.substring(0, 300).toString() + "...";
+  const text2 = post?.content?.substring(0, 200).toString() + "...";
   let text;
   if (typeof text2 === "string") {
     text = parseHtmlText(text2);
@@ -83,7 +83,7 @@ export default function ExPostCard({ post }) {
             justifyContent: "space-between",
             alignItems: "center",
             gap: 1,
-            // p: 0.8,
+            paddingRight: 1.5
           }}
         >
           <Box
@@ -215,7 +215,7 @@ export default function ExPostCard({ post }) {
             gridArea: "footer",
             display: "flex",
             justifyContent: "space-between",
-            // pt: { xs: 0, lg: 1.7 },
+            pt: .7,
             pb: 2,
             color: "black",
           }}
@@ -223,14 +223,14 @@ export default function ExPostCard({ post }) {
           <Box sx={{ display: "flex", gap: 2 }}>
             <LikeComp postId={post?.id} likes={post?.likes} />
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <IconButton sx={{ width: 30, height: 30 }}>
+              <IconButton sx={{ width: 27, height: 27 }}>
                 <AiOutlineComment color="black" />
               </IconButton>
-              <Typography sx={{ fontSize: 13 }}>{post.comments}</Typography>
+              <Typography sx={{ fontSize: 11 }}>{post.comments}</Typography>
             </Box>
           </Box>
           <Link to={`/posts/${post.id}`} className="read-more-ex-post">
-            <Typography sx={{ fontSize: 13 }}>Devamını Oku...</Typography>
+            <Typography sx={{ fontSize: 11 }}>Devamını Oku...</Typography>
           </Link>
         </Box>
       </Box>
