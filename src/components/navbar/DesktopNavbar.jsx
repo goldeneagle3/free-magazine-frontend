@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BsDiagram3, BsFacebook, BsTwitter, BsYoutube } from "react-icons/bs";
-import { AiFillInstagram, AiOutlineLogout } from "react-icons/ai";
-import { Stack, useMediaQuery, useTheme } from "@mui/material";
+import { BsDiagram3 } from "react-icons/bs";
+import { AiOutlineLogout } from "react-icons/ai";
+import { useMediaQuery, useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
@@ -33,6 +33,7 @@ import useLogout from "../../hooks/useLogout.hook";
 import { stringAvatar } from "../../utils/CustomProfileImage";
 import { useGetCategoriesQuery } from "../../features/categories/categorySlice";
 import { useGetActiveSubCategoriesByCategoryQuery } from "../../features/sub-categories/subCategorySlice";
+import SocialLinks from "../social_media/SocialLinks";
 
 const pages = [
   { id: 0, pageName: "/posts", navName: "Tüm Yazıları Gör" },
@@ -149,25 +150,7 @@ const DesktopNavbar = () => {
               justifyContent: "center",
             }}
           >
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              sx={{ mt: 1, mx: 3 }}
-            >
-              <a href="https://www.facebook.com">
-                <BsFacebook size={20} color={theme.palette.primary.dark} />
-              </a>
-              <a href="https://www.instagram.com">
-                <AiFillInstagram size={20} color={theme.palette.primary.dark} />
-              </a>
-              <a href="https://twitter.com">
-                <BsTwitter size={20} color={theme.palette.primary.dark} />
-              </a>
-              <a href="https://youtube.com">
-                <BsYoutube size={20} color={theme.palette.primary.dark} />
-              </a>
-            </Stack>
+            <SocialLinks />
             {username ? (
               <Tooltip title="Ayarları Aç">
                 <Button

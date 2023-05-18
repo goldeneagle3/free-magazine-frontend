@@ -137,12 +137,12 @@ const SignUpForm = () => {
     <form onSubmit={onSubmitHandler}>
       <Stack spacing={1} sx={{ alignItems: "center" }}>
         <FormField
-          fieldName="username"
+          fieldName="kullanıcı adı"
           value={username}
           onChange={nameChangeHandler}
           onBlur={nameBlurHandler}
           error={nameHasError}
-          helperText="Enter your username"
+          helperText="Kullanıcı adı giriniz"
           type="text"
         />
         <FormField
@@ -151,7 +151,7 @@ const SignUpForm = () => {
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
           error={emailHasError}
-          helperText="Enter your email"
+          helperText="Email adresinizi giriniz"
           type="email"
           placeholder="test@test.com"
         />
@@ -174,7 +174,7 @@ const SignUpForm = () => {
           type="text"
         />
         <FormField
-          fieldName="password"
+          fieldName="şifre"
           value={password}
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
@@ -184,7 +184,7 @@ const SignUpForm = () => {
           placeholder="En az 8 karakter olmalıdır."
         />
         <FormField
-          fieldName="confirmPassword"
+          fieldName="şifre onay"
           value={confirmPassword}
           onChange={confirmPasswordChangeHandler}
           onBlur={confirmPasswordBlurHandler}

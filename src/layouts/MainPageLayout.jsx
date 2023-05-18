@@ -5,10 +5,12 @@ import "./../styles/sass/main.scss";
 
 const MainPageLayout = ({ children }) => {
   return (
-    <div className="main_page_layout">
-      <Navbar />
-      {children}
-    </div>
+    <>
+      <div className="main_page_layout">
+        <Navbar />
+        {children}
+      </div>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import moment from "moment/moment";
-import 'moment/locale/tr' 
+import "moment/locale/tr";
 
 import { useDeleteCommentMutation } from "../../features/comments/commentsSlice";
 import { useSelector } from "react-redux";
@@ -12,8 +12,9 @@ import EditComment from "./EditComment";
 import { BASE_URL, photosApiUrl } from "../../config/urls";
 
 const SingleComment = ({ comment }) => {
-  moment.locale('tr');
-  const imageUrl = comment?.userImage && `${BASE_URL}${photosApiUrl}/${comment?.userImage}`;
+  moment.locale("tr");
+  const imageUrl =
+    comment?.userImage && `${BASE_URL}${photosApiUrl}/${comment?.userImage}`;
   const alignItems = {
     display: "flex",
     justifyContent: "center",
@@ -31,7 +32,6 @@ const SingleComment = ({ comment }) => {
       console.log(error);
     }
   };
-
 
   return (
     <Stack spacing={2} sx={{ pb: 4 }}>
@@ -61,7 +61,8 @@ const SingleComment = ({ comment }) => {
         {comment?.content}
       </p>
       {/* Edited */}
-      {comment?.createDateTime !== comment?.updateDateTime ? (
+      {moment(comment?.createDateTime).calendar() !==
+      moment(comment?.updateDateTime).calendar() ? (
         <Typography align="right" sx={{ fontStyle: "italic", pr: 5 }}>
           {moment(comment?.updateDateTime).fromNow() + " değiştirildi."}
         </Typography>

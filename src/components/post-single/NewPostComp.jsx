@@ -184,7 +184,7 @@ export default function NewPostComp() {
           onChange={titleChangeHandler}
           onBlur={titleBlurHandler}
           error={titleHasError}
-          helperText="Bir başlık giriniz."
+          helperText="Maximum 75 karakterli bir başlık giriniz."
           type="text"
           fullwidth={true}
           placeholder="Başlık"

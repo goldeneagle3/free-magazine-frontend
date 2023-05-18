@@ -90,7 +90,7 @@ const SignInForm = () => {
     <form onSubmit={onSubmitHandler}>
       <Stack spacing={2} sx={{ alignItems: "center" }}>
         <FormField
-          fieldName="username or email"
+          fieldName="Kullanıcı Adı veya Email"
           value={userID}
           onChange={userIDChangeHandler}
           onBlur={userIDBlurHandler}
@@ -100,7 +100,7 @@ const SignInForm = () => {
           placeholder="test@test.com | testUserName"
         />
         <FormField
-          fieldName="password"
+          fieldName="Şifre"
           value={password}
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
@@ -108,6 +108,7 @@ const SignInForm = () => {
           helperText="Lütfen şifrenizi girin."
           type="password"
           placeholder="En az 8 karakter olmalıdır."
+          
         />
         <FormButton
           text="Giriş Yap"

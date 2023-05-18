@@ -5,13 +5,12 @@ import DesktopNavbar from "../components/navbar/DesktopNavbar";
 import Navbar from "../components/navbar/Navbar";
 import { RightSide } from "../components/sides/RightSide";
 
-
 const MainLayout = ({ children }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
-    <>
+    <Stack>
       <DesktopNavbar />
       <div className="container">
         <Navbar />
@@ -35,7 +34,7 @@ const MainLayout = ({ children }) => {
                 alignItems: "center",
                 textAlign: "center",
                 mt: 4,
-                p:1
+                p: 1,
               }}
             >
               {children}
@@ -59,7 +58,7 @@ const MainLayout = ({ children }) => {
           </Stack>
         )}
       </div>
-    </>
+    </Stack>
   );
 };
 

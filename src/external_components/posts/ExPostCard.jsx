@@ -53,7 +53,7 @@ export default function ExPostCard({ post }) {
       initial={{ x: -100, opacity: 0 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ type: "spring", duration: 1 }}
-      viewport={{ once: false, amount: 0.6 }}
+      viewport={{ once: false, amount: 0.2 }}
       className="main__post"
       sx={{
         display: "flex",
