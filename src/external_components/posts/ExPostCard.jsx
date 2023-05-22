@@ -12,10 +12,9 @@ import {
 import { AiOutlineComment } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { motion } from "framer-motion";
-
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
+
 import LikeComp from "../../components/like/LikeComp";
 import { stringAvatar } from "../../utils/CustomProfileImage";
 import { parseHtmlText } from "../../utils/htmlParseConfig";
@@ -49,11 +48,6 @@ export default function ExPostCard({ post }) {
   }
   return (
     <Box
-      component={motion.div}
-      initial={{ x: -100, opacity: 0 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", duration: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
       className="main__post"
       sx={{
         display: "flex",

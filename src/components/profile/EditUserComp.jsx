@@ -29,10 +29,25 @@ const EditUserComp = ({ username }) => {
     description: data?.description,
     image: "",
     imageProtect: true,
+    facebook: data?.facebook,
+    instagram: data?.instagram,
+    youtube: data?.youtube,
+    twitter: data?.twitter,
+    blog: data?.blog,
   });
 
-  const { firstName, lastName, description, image, imageProtect } = values;
-
+  const {
+    firstName,
+    lastName,
+    description,
+    image,
+    imageProtect,
+    facebook,
+    instagram,
+    youtube,
+    twitter,
+    blog,
+  } = values;
 
   if (!isLoading && currentUser !== data?.username) {
     return <Navigate to="/posts" />;
@@ -60,6 +75,11 @@ const EditUserComp = ({ username }) => {
 
     firstName && newUser.append("firstName", firstName);
     lastName && newUser.append("lastName", lastName);
+    facebook && newUser.append("facebook", facebook);
+    instagram && newUser.append("instagram", instagram);
+    twitter && newUser.append("twitter", twitter);
+    youtube && newUser.append("youtube", youtube);
+    blog && newUser.append("blog", blog);
     description && newUser.append("description", description);
     image && newUser.append("image", image);
     newUser.append("imageProtect", imageProtect);
@@ -131,6 +151,41 @@ const EditUserComp = ({ username }) => {
           value={lastName}
           onChange={handleChange("lastName")}
           placeholder="Soyadınızı giriniz"
+          type="text"
+        />
+        <FormField
+          fieldName="facebook"
+          value={facebook}
+          onChange={handleChange("facebook")}
+          placeholder="Facebook adresinizi giriniz"
+          type="text"
+        />
+        <FormField
+          fieldName="instagram"
+          value={instagram}
+          onChange={handleChange("instagram")}
+          placeholder="Instagram adresinizi giriniz"
+          type="text"
+        />
+        <FormField
+          fieldName="youtube"
+          value={youtube}
+          onChange={handleChange("youtube")}
+          placeholder="Youtube adresinizi giriniz"
+          type="text"
+        />
+        <FormField
+          fieldName="twitter"
+          value={twitter}
+          onChange={handleChange("twitter")}
+          placeholder="Twitter adresinizi giriniz"
+          type="text"
+        />
+        <FormField
+          fieldName="blog"
+          value={blog}
+          onChange={handleChange("blog")}
+          placeholder="Kişisel blog adresinizi giriniz"
           type="text"
         />
         <FormButton

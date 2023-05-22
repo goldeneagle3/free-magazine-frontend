@@ -44,7 +44,10 @@ const Profile = () => {
           ))}
         </Grid>
       ) : (
-        <div className="container" style={{ backgroundColor: "transparent",boxShadow:'none' }}>
+        <div
+          className="container"
+          style={{ backgroundColor: "transparent", boxShadow: "none" }}
+        >
           {posts?.map((post) => (
             <Stack
               spacing={3}
