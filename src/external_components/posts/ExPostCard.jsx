@@ -76,8 +76,8 @@ export default function ExPostCard({ post }) {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            gap: 1,
-            paddingRight: 1.5
+            // gap: 1,
+            // paddingRight: .5
           }}
         >
           <Box

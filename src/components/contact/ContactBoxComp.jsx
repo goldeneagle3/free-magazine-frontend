@@ -1,13 +1,17 @@
 import { Stack } from "@mui/material";
 import React from "react";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { MdPhone } from "react-icons/md";
+import { SiGmail, SiMicrosoftoutlook } from "react-icons/si";
+
 import ContactBoxInfoBoxComp from "./ContactBoxInfoBoxComp";
+import { googleMail, outlookMail, phoneNumber } from "../../config/constants";
 
 const ContactBoxComp = () => {
   return (
-    <Stack spacing={2} sx={{ maxWidth: 400, margin: "auto", mb: 6 }}>
-      <ContactBoxInfoBoxComp icon={<MdPhone />} text="+90212 000 00 00" />
-      <ContactBoxInfoBoxComp icon={<MdEmail />} text="gugultas@gmail.com" />
+    <Stack spacing={1.2} sx={{ maxWidth: 400, margin: "auto", mb: 6 }}>
+      <ContactBoxInfoBoxComp icon={<MdPhone />} text={phoneNumber} />
+      <ContactBoxInfoBoxComp icon={<SiGmail />} text={googleMail} />
+      <ContactBoxInfoBoxComp icon={<SiMicrosoftoutlook />} text={outlookMail} />
     </Stack>
   );
 };

@@ -10,8 +10,10 @@ import ResourceNotFound from "../error/ResourceNotFound";
 import { useGetAuthorsQuery } from "../../features/user/usersSlice";
 import { Link } from "react-router-dom";
 import { shortIntroText } from "../../utils/shortIntroText";
+import { dipnot } from "../../utils/dipnot";
 
 export const RightSide = () => {
+  const boxStyle = { border: "1px solid #cccccc48", p: 1 };
   const { data, isLoading, isError, error } = useGetCategoriesQuery();
   const {
     data: authors,
@@ -38,7 +40,7 @@ export const RightSide = () => {
       }}
     >
       {/* Authors */}
-      <Stack sx={{ border: "1px solid #ccc", p: 1 }}>
+      <Stack sx={boxStyle}>
         <h4 className="list-header">Yazarlar</h4>
         <List dense>
           {athLoading ? (
@@ -64,10 +66,8 @@ export const RightSide = () => {
       </Stack>
 
       {/* Top Posts */}
-      <Stack sx={{ border: "1px solid #ccc", p: 1 }}>
-        <h4 className="list-header u-margin-bottom-small">
-          Popüler Yazılar
-        </h4>
+      <Stack sx={boxStyle}>
+        <h4 className="list-header u-margin-bottom-small">Popüler Yazılar</h4>
         {postsLoading ? (
           <MainLoadingComp isLoading={postsLoading} />
         ) : postIsError ? (
@@ -78,7 +78,7 @@ export const RightSide = () => {
       </Stack>
 
       {/* Categories */}
-      <Stack sx={{ border: "1px solid #ccc", p: 1,pb:4 }}>
+      <Stack sx={{ ...boxStyle, pb: 4 }}>
         <h4 className="list-header p-padding-bottom-small">Kategoriler</h4>
         {isLoading ? (
           <MainLoadingComp isLoading={isLoading} />
@@ -89,12 +89,21 @@ export const RightSide = () => {
         )}
       </Stack>
 
-      <h4 className="list-header u-margin-bottom-small u-margin-top-medium">
-        Bilgilendirme
-      </h4>
-      <p className="paragraph--parsed">
-        {shortIntroText}
-      </p>
+      {/* Bilgilendirme */}
+      <Stack sx={{ ...boxStyle, pb: 4 }}>
+        <h4 className="list-header u-margin-bottom-small u-margin-top-medium">
+          Bilgilendirme
+        </h4>
+        <p className="paragraph--parsed">{shortIntroText}</p>
+      </Stack>
+
+      {/* Dipnot - Misafir Kullanici */}
+      <Stack sx={{ ...boxStyle, pb: 4 }}>
+        <h4 className="list-header u-margin-bottom-small u-margin-top-medium">
+          &#33; Dipnot
+        </h4>
+        <p className="paragraph--parsed">{dipnot}</p>
+      </Stack>
     </Box>
   );
 };

@@ -306,7 +306,7 @@ const DesktopNavbar = () => {
                   borderRight: "2px solid black",
                   my: 1,
                   px: 1,
-                  fontSize: "1.3rem",
+                  fontSize: "1rem",
                   fontWeight: "900",
                   fontFamily: '"Montserrat", sans-serif',
                   color: theme.palette.primary.dark,
@@ -372,7 +372,7 @@ const DesktopNavbar = () => {
                     mx: { md: 1, lg: 1 },
                     my: 1,
                     px: 1,
-                    fontSize: ".9rem",
+                    fontSize: ".7rem",
                     fontWeight: "700",
                     color: theme.palette.primary.dark,
 

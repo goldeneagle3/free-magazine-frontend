@@ -2,11 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Container, Grid } from "@mui/material";
 import { Stack } from "@mui/system";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { MdPhone } from "react-icons/md";
+import { SiGmail, SiMicrosoftoutlook } from "react-icons/si";
 
 import Logo from "./../../assets/img/logodnm4.png";
 import "./../../styles/sass/main.scss";
-import { BRAND } from "../../config/constants";
+import {
+  BRAND,
+  googleMail,
+  outlookMail,
+  phoneNumber,
+} from "../../config/constants";
 import { shortIntroText } from "../../utils/shortIntroText";
 
 const Footer = () => {
@@ -62,8 +68,16 @@ const Footer = () => {
                   spacing={5}
                   sx={{ alignItems: "center" }}
                 >
-                  <MdEmail />
-                  <p>gugultas@gmail.com</p>
+                  <SiGmail />
+                  <p>{googleMail}</p>
+                </Stack>
+                <Stack
+                  direction="row"
+                  spacing={5}
+                  sx={{ alignItems: "center" }}
+                >
+                  <SiMicrosoftoutlook />
+                  <p>{outlookMail}</p>
                 </Stack>
                 <Stack
                   direction="row"
@@ -71,7 +85,7 @@ const Footer = () => {
                   sx={{ alignItems: "center" }}
                 >
                   <MdPhone />
-                  <p>212 000 00 00</p>
+                  <p>{phoneNumber}</p>
                 </Stack>
               </Stack>
             </div>

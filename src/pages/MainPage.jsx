@@ -1,4 +1,11 @@
-import { Grid, Stack, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Grid,
+  ImageList,
+  ImageListItem,
+  Stack,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React from "react";
 
 import ResourceNotFound from "../components/error/ResourceNotFound";
@@ -121,27 +128,18 @@ const MainPage = () => {
                       display: "flex",
                       alignItems: "center",
                       textAlign: "center",
+                      overflowY: "none",
                       mt: 4,
                       p: 1,
                     }}
                   >
-                    {mainPosts?.map((post) => (
-                      <Grid
-                        item
-                        xs={12}
-                        sm={6}
-                        key={post?.id}
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          textAlign: "center",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <PostCard post={post} />
-                      </Grid>
-                    ))}
+                    <ImageList variant="masonry" cols={2} gap={8}>
+                      {mainPosts?.map((post) => (
+                        <ImageListItem item key={post?.id}>
+                          <PostCard post={post} />
+                        </ImageListItem>
+                      ))}
+                    </ImageList>
                   </Grid>
                 </Grid>
                 <Grid
