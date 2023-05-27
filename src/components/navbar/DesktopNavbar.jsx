@@ -302,10 +302,10 @@ const DesktopNavbar = () => {
                 to={`/posts/category/${category?.name}`}
                 sx={{
                   borderRadius: 0,
-                  mx: { md: 1, lg: 2 },
+                  mx: 1,
                   borderRight: "2px solid black",
                   my: 1,
-                  px: 1,
+                  px: 0,
                   fontSize: "1rem",
                   fontWeight: "900",
                   fontFamily: '"Montserrat", sans-serif',
@@ -369,9 +369,8 @@ const DesktopNavbar = () => {
                   component={NavLink}
                   to={`/posts/category/${categoryName}/subCategory/${subCategory?.id}`}
                   sx={{
-                    mx: { md: 1, lg: 1 },
+                    mx: .3,
                     my: 1,
-                    px: 1,
                     fontSize: ".7rem",
                     fontWeight: "700",
                     color: theme.palette.primary.dark,
