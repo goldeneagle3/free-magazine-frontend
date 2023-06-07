@@ -29,9 +29,11 @@ import {
 import PostsList from "../features/posts/PostsList";
 import MainPageLayout from "../layouts/MainPageLayout";
 import Logo from "./../assets/img/logodnm4.png";
-import { shortIntroText } from "../utils/shortIntroText";
 import LogoCart from "../components/logo/LogoCart";
 import MiniFooter from "../components/footer/MiniFooter";
+import { shortestIntroText } from "../utils/shortestIntroText";
+import Navbar from "../components/navbar/Navbar";
+import ShowTopsOfMasterpiecesComp from "../components/masterpiece/ShowTopsOfMasterpiecesComp";
 
 const MainPage = () => {
   const theme = useTheme();
@@ -53,6 +55,7 @@ const MainPage = () => {
   return (
     <>
       <DesktopNavbar />
+      <Navbar />
       {matches ? (
         <>
           <MainPageLayout>
@@ -100,7 +103,12 @@ const MainPage = () => {
                       />
                       <h3 className="list-header">{BRAND}</h3>
                     </Stack>
-                    <p className="paragraph--parsed">{shortIntroText}</p>
+                    <p
+                      className="paragraph--parsed"
+                      style={{ textAlign: "center", marginTop: "1rem" }}
+                    >
+                      {shortestIntroText}
+                    </p>
                   </Stack>
                 </Grid>
                 <Grid
@@ -149,6 +157,7 @@ const MainPage = () => {
                   sx={{ mt: 0, mx: { xs: 4, sm: 19, md: 0 } }}
                 >
                   <Stack spacing={4}>
+                    <ShowTopsOfMasterpiecesComp />
                     <Stack sx={{ border: "1px solid #ccc", p: 1 }}>
                       <h4 className="list-header p-padding-bottom-small">
                         Kategoriler
@@ -204,8 +213,11 @@ const MainPage = () => {
             >
               <Stack>
                 <LogoCart />
-                <p className="paragraph--parsed p-padding-right-medium p-padding-left-medium">
-                  {shortIntroText}
+                <p
+                  style={{ textAlign: "center", marginTop: "1rem" }}
+                  className="paragraph--parsed p-padding-right-medium p-padding-left-medium"
+                >
+                  {shortestIntroText}
                 </p>
               </Stack>
             </Grid>

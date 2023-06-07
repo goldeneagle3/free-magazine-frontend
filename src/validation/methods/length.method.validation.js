@@ -25,7 +25,7 @@ export const validateContactContentLength = (text) => {
 };
 
 export const validateContentTitleLength = (text) => {
-  return _validateLength(text, { min: 2, max: 60 });
+  return _validateLength(text, { min: 2, max: 75 });
 };
 
 export const validateContentLength = (text) => {

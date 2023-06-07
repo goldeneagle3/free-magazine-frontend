@@ -27,6 +27,11 @@ import Contact from "./pages/Contact";
 import Mail from "./pages/Mail";
 import SingleMail from "./pages/SingleMail";
 import PostsBySubCategoryPage from "./pages/PostsBySubCategoryPage";
+import Activation from "./pages/Activation";
+import ResetPassword from "./pages/ResetPassword";
+import NewMasterpiece from "./pages/NewMasterpiece";
+import Music from "./pages/Music";
+import Picture from "./pages/Picture";
 
 const ROLES = {
   User: "ROLE_USER",
@@ -56,6 +61,10 @@ const ApplicationRoute = () => {
             <Route path="/home" element={<MainPage />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="construction" element={<Construction />} />
+            <Route path="/activation/:token" element={<Activation />} />
+            <Route path="/resetPassword/:token" element={<ResetPassword />} />
+            <Route path="/musicById/:id" element={<Music />} />
+            <Route path="/pictureById/:id" element={<Picture />} />
             <Route path="/posts">
               <Route index element={<Home />} />
               <Route path=":postId" element={<PostByID />} />
@@ -147,6 +156,20 @@ const ApplicationRoute = () => {
                   </RequireAuth>
                 }
               />
+              <Route path="masterpieces">
+                <Route
+                  index
+                  element={
+                    <RequireAuth
+                      accessToken={accessToken}
+                      allowedRoles={(ROLES.Admin, ROLES.Editor)}
+                    >
+                      <NewMasterpiece />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
+
               <Route
                 path="deactivatedPosts"
                 element={

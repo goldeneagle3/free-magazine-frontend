@@ -11,6 +11,7 @@ import { useGetAuthorsQuery } from "../../features/user/usersSlice";
 import { Link } from "react-router-dom";
 import { shortIntroText } from "../../utils/shortIntroText";
 import { dipnot } from "../../utils/dipnot";
+import ShowTopsOfMasterpiecesComp from "../masterpiece/ShowTopsOfMasterpiecesComp";
 
 export const RightSide = () => {
   const boxStyle = { border: "1px solid #cccccc48", p: 1 };
@@ -39,6 +40,9 @@ export const RightSide = () => {
         px: { xs: 3, sm: 19, md: 0 },
       }}
     >
+      {/* Masterpiece */}
+      <ShowTopsOfMasterpiecesComp />
+
       {/* Authors */}
       <Stack sx={boxStyle}>
         <h4 className="list-header">Yazarlar</h4>

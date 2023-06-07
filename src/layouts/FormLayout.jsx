@@ -5,15 +5,15 @@ import { BRAND } from "../config/constants";
 
 const FormLayout = ({ children, text }) => {
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} >
       <Grid item xs={12}>
         <Box
           sx={{
-            border: { xs: 0, md: 1 },
+            // border: { xs: 0, md: 1 },
             margin: "3rem auto",
             padding: { xs: 2, md: 3 },
-            borderColor: { md: "#cccccc" },
-            borderRadius: { xs: 0, md: "5px" },
+            // borderColor: { md: "#cccccc" },
+            // borderRadius: { xs: 0, md: "5px" },
             maxWidth: 800,
             width: "100%",
           }}
@@ -26,7 +26,7 @@ const FormLayout = ({ children, text }) => {
               borderLeft: "2px dotted black",
               borderRight: "2px dotted black",
               borderTop: "2px dotted black",
-              pt:3
+              pt: 3,
             }}
             variant="h4"
             align="center"

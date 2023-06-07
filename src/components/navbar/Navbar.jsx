@@ -269,6 +269,7 @@ export default function Navbar(props) {
             top: 4,
             left: 13,
             zIndex: 10000,
+            bgcolor:'white'
           }}
         >
           <AiOutlineMenu />

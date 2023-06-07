@@ -237,6 +237,11 @@ const DesktopNavbar = () => {
                       </Link>
                     </MenuItem>
                     <MenuItem onClick={handleCloseUserMenu}>
+                      <Link to={`/administration/masterpieces`}>
+                        <Typography textAlign="center">Eserler</Typography>
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu}>
                       <Link to={`/administration/deactivatedPosts`}>
                         <Typography textAlign="center">
                           Deaktif Yazılar
@@ -369,7 +374,7 @@ const DesktopNavbar = () => {
                   component={NavLink}
                   to={`/posts/category/${categoryName}/subCategory/${subCategory?.id}`}
                   sx={{
-                    mx: .3,
+                    mx: 0.3,
                     my: 1,
                     fontSize: ".7rem",
                     fontWeight: "700",

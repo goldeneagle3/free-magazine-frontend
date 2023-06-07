@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Button,
   Dialog,
@@ -6,7 +7,6 @@ import {
   DialogTitle,
   IconButton,
 } from "@mui/material";
-import React from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useUpdateCategoryMutation } from "../../features/categories/categorySlice";
 import FormField from "../form/FormField";

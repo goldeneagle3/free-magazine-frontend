@@ -12,6 +12,7 @@ import useAuth from "../../hooks/useAuth.hook";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
 import { setCredentials } from "../../features/auth/authSlice";
 import { cookieExpireTime, rememberCookie } from "../../config/constants";
+import ForgotPassword from "./ForgotPassword";
 
 const SignInForm = () => {
   const { persist } = useAuth();
@@ -105,10 +106,9 @@ const SignInForm = () => {
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
           error={passwordHasError}
-          helperText="Lütfen şifrenizi girin."
+          helperText="Lütfen şifrenizi giriniz."
           type="password"
           placeholder="En az 8 karakter olmalıdır."
-          
         />
         <FormButton
           text="Giriş Yap"
@@ -117,6 +117,8 @@ const SignInForm = () => {
           width={100}
           isDisabled={passwordHasError || userIDHasError || isLoading}
         />
+        <ForgotPassword />
+
         {errMsg && (
           <Typography sx={{ color: "red" }} align="center" variant="h6">
             {errMsg}

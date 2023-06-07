@@ -40,7 +40,7 @@ export default function FormField({
         fullWidth={fullwidth}
         size="small"
         placeholder={placeholder ? placeholder : ""}
-        sx={{ borderColor: "red", maxWidth: 600 }}
+        sx={{ borderColor: "red", maxWidth: 300,width:'100%' }}
       />
     </React.Fragment>
   );

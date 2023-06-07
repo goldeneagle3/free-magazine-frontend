@@ -10,10 +10,15 @@ import {
   BsTwitter,
   BsYoutube,
 } from "react-icons/bs";
+import SendActivationRequest from "../auth/SendActivationRequest";
+import { selectCurrentUsername } from "../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const ProfileBox = ({ user }) => {
+  const loggedUsername = useSelector(selectCurrentUsername);
   const theme = useTheme();
   const imageUrl = user?.image && `${BASE_URL}${photosApiUrl}/${user?.image}`;
+
   return (
     <div className="profile">
       <div className="profile__box">
@@ -22,13 +27,11 @@ const ProfileBox = ({ user }) => {
             src={imageUrl}
             sx={{
               width: {
-                xs: 80,
-                md: 90,
+                xs: 90,
                 lg: 120,
               },
               height: {
-                xs: 80,
-                md: 90,
+                xs: 90,
                 lg: 120,
               },
             }}
@@ -36,9 +39,18 @@ const ProfileBox = ({ user }) => {
           <Box sx={{ alignItems: "center", textAlign: "center" }}>
             <h3 className="heading-secondary--profile">{user?.username}</h3>
             {(user?.firstName || user?.lastName) && (
-              <h5 className="heading-tertiary">
+              <h5
+                className="heading-tertiary"
+                style={{ marginBottom: ".5rem" }}
+              >
                 {user.username && user?.firstName + " " + user?.lastName}
               </h5>
+            )}
+            {loggedUsername === user?.username && !user?.enabled && (
+              <SendActivationRequest
+                userEmail={user?.email}
+                username={user?.username}
+              />
             )}
             <Stack
               direction="row"

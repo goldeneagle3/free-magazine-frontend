@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Alert,
   Backdrop,
   CircularProgress,
-  Snackbar,
   Stack,
   Typography,
 } from "@mui/material";
@@ -18,6 +16,7 @@ import {
 import FormField from "../form/FormField";
 import FormButton from "../button/FormButton";
 import { useRegisterMutation } from "../../features/auth/authApiSlice";
+import SnackAlert from "../alert/SnackAlert";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -25,14 +24,6 @@ const SignUpForm = () => {
   const [errMsg, setErrMsg] = useState("");
   const [progress, setProgress] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
 
   const {
     text: username,
@@ -179,7 +170,7 @@ const SignUpForm = () => {
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
           error={passwordHasError}
-          helperText="Lütfen şifrenizi girin."
+          helperText="Lütfen şifrenizi giriniz."
           type="password"
           placeholder="En az 8 karakter olmalıdır."
         />
@@ -217,15 +208,13 @@ const SignUpForm = () => {
         >
           <CircularProgress color="inherit" />
         </Backdrop>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            sx={{ width: "100%" }}
-          >
-            Tebrikler başarıyla üye oldunuz ! Şimdi giriş yapabalirsiniz.
-          </Alert>
-        </Snackbar>
+        <SnackAlert
+          open={open}
+          setOpen={setOpen}
+          status="success"
+          text="Tebrikler başarıyla üye oldunuz. Hesabınızı aktif hale getirmek için
+            email adresinizi kontrol ediniz."
+        />
       </Stack>
     </form>
   );
