@@ -95,7 +95,11 @@ const EditorNewPostComp = () => {
       return;
     }
 
-    if (titleHasError) return;
+    if (titleHasError) {
+      setError("En fazla 75 karakter içeren bir başlık giriniz.");
+      setOpen(true);
+      return;
+    }
 
     if (!validateContentLength(content)) {
       return;
@@ -105,7 +109,7 @@ const EditorNewPostComp = () => {
       setError("Lütfen bir resim ekleyiniz.");
       setOpen(true);
       return;
-    };
+    }
 
     setProgress(true);
 
@@ -229,7 +233,7 @@ const EditorNewPostComp = () => {
           onChange={titleChangeHandler}
           onBlur={titleBlurHandler}
           error={titleHasError}
-          helperText="Bir başlık giriniz."
+          helperText={"Bir başlık giriniz."}
           type="text"
           fullwidth={true}
           placeholder="Başlık"

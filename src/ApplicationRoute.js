@@ -32,6 +32,7 @@ import ResetPassword from "./pages/ResetPassword";
 import NewMasterpiece from "./pages/NewMasterpiece";
 import Music from "./pages/Music";
 import Picture from "./pages/Picture";
+import Movie from "./pages/Movie";
 
 const ROLES = {
   User: "ROLE_USER",
@@ -65,6 +66,7 @@ const ApplicationRoute = () => {
             <Route path="/resetPassword/:token" element={<ResetPassword />} />
             <Route path="/musicById/:id" element={<Music />} />
             <Route path="/pictureById/:id" element={<Picture />} />
+            <Route path="/movieById/:id" element={<Movie />} />
             <Route path="/posts">
               <Route index element={<Home />} />
               <Route path=":postId" element={<PostByID />} />

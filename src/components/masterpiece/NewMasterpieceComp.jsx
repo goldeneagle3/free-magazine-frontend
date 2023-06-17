@@ -15,6 +15,7 @@ import EditorToolbar, {
 import FormButton from "../button/FormButton";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
 import {
+  useCreateMovieMutation,
   useCreateMusicMutation,
   useCreatePictureMutation,
 } from "../../features/masterpiece/masterpieceSlice";
@@ -29,6 +30,7 @@ const NewMasterpieceComp = ({ genre }) => {
 
   const [createMusic, { isLoading }] = useCreateMusicMutation();
   const [createPicture, { isLoadingPicture }] = useCreatePictureMutation();
+  const [createMovie, { isLoadingMovie }] = useCreateMovieMutation();
 
   const {
     text: title,
@@ -111,7 +113,11 @@ const NewMasterpieceComp = ({ genre }) => {
     const resp =
       genre === genres.MUSIC
         ? await createMusic(newMasterpiece)
-        : await createPicture(newMasterpiece);
+        : genre === genres.PICTURE
+        ? await createPicture(newMasterpiece)
+        : genre === genres.MOVIE
+        ? await createMovie(newMasterpiece)
+        : null;
 
     if (resp.error) {
       setProgress(false);
@@ -124,8 +130,12 @@ const NewMasterpieceComp = ({ genre }) => {
     }
   };
 
-  if (isLoading || isLoadingPicture) {
-    return <MainLoadingComp isLoading={isLoading || isLoadingPicture} />;
+  if (isLoading || isLoadingPicture || isLoadingMovie) {
+    return (
+      <MainLoadingComp
+        isLoading={isLoading || isLoadingPicture || isLoadingMovie}
+      />
+    );
   }
 
   return (
@@ -218,7 +228,7 @@ const NewMasterpieceComp = ({ genre }) => {
           color="#ccc"
           bgcolor="#033f67"
           width={100}
-          isDisabled={isLoadingPicture || isLoading}
+          isDisabled={isLoadingPicture || isLoading || isLoadingMovie}
         />
       </Stack>
       <SnackbarMUI open={open} setOpen={setOpen} text={error} />

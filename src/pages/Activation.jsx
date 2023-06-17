@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BASE_URL } from "../config/urls";
 import FormLayout from "../layouts/FormLayout";
-import LogoCart from "../components/logo/LogoCart";
-import { Alert, Snackbar, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import AuthButton from "../components/button/AuthButton";
+import { checkTokenIsBroken } from "../validation/conditions/checkTokenIsBroken";
 
 const activation = async (params) => {
   try {
@@ -25,33 +25,23 @@ const activation = async (params) => {
 const Activation = () => {
   const { token } = useParams();
   const [values, setValues] = useState({
-    error: "",
+    message: "",
     open: false,
   });
 
   useEffect(() => {
     activation(token).then((data) => {
-      if (data?.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({ ...values, error: "", open: true });
-      }
+      // console.log(data);
+      setValues({ ...values, open: true, message: data?.message });
     });
   }, [token]);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setValues({ ...values, open: false });
-  };
 
   return (
     <FormLayout>
       <>
-        {values?.error ? (
-          <Typography textAlign="center" color="red">
+        {checkTokenIsBroken(values.message) ? (
+          <Typography textAlign="center" color="red" sx={{ mb: 2 }}>
             Hesabınız aktive edilemedi. Lütfen tekrar deneyin.
           </Typography>
         ) : (
@@ -71,18 +61,6 @@ const Activation = () => {
           </Stack>
         )}
       </>
-
-      <LogoCart />
-
-      <Snackbar
-        open={values.open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          Tebrikler! Hesabınız başarıyla aktive edilmiştir.
-        </Alert>
-      </Snackbar>
     </FormLayout>
   );
 };

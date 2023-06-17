@@ -43,6 +43,8 @@ const SingleMasterpiece = ({ data, title, genre }) => {
                 ? "/musicById/" + data?.id
                 : genre === genres.PICTURE
                 ? "/pictureById/" + data?.id
+                : genre === genres.MOVIE
+                ? "/movieById/" + data?.id
                 : ""
             }
           >

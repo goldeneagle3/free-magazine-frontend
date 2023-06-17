@@ -1,6 +1,7 @@
 import { Divider, Stack } from "@mui/material";
 import React from "react";
 import {
+  useGetTopMovieOfTheWeekQuery,
   useGetTopMusicOfTheWeekQuery,
   useGetTopPictureOfTheWeekQuery,
 } from "../../features/masterpiece/masterpieceSlice";
@@ -13,11 +14,12 @@ const ShowTopsOfMasterpiecesComp = () => {
   const { data: music, isLoading: isMscLdng } = useGetTopMusicOfTheWeekQuery();
   const { data: picture, isLoading: isPctrLdng } =
     useGetTopPictureOfTheWeekQuery();
+  const { data: movie, isLoading: isMvLdng } = useGetTopMovieOfTheWeekQuery();
 
   return (
     <Stack sx={boxStyle} spacing={3}>
-      {(isMscLdng || isPctrLdng) && (
-        <MainLoadingComp isLoading={isMscLdng || isPctrLdng} />
+      {(isMscLdng || isPctrLdng || isMvLdng) && (
+        <MainLoadingComp isLoading={isMscLdng || isPctrLdng || isMvLdng} />
       )}
       {music && (
         <SingleMasterpiece
@@ -32,6 +34,14 @@ const ShowTopsOfMasterpiecesComp = () => {
           data={picture}
           title="Haftanın Tablosu"
           genre={genres.PICTURE}
+        />
+      )}
+      {picture && movie && <Divider />}
+      {movie && (
+        <SingleMasterpiece
+          data={movie}
+          title="Haftanın Perdesi"
+          genre={genres.MOVIE}
         />
       )}
     </Stack>

@@ -1,5 +1,5 @@
 import React from "react";
-import { MdInsertPhoto, MdUpdate } from "react-icons/md";
+import { MdInsertPhoto, MdOutlineEdit } from "react-icons/md";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -22,6 +22,7 @@ import EditorToolbar, {
 } from "./../../utils/QuillEditorToolbar";
 import SnackbarMUI from "../snackbar/SnackbarMUI";
 import {
+  useUpdateMovieByIdMutation,
   useUpdateMusicByIdMutation,
   useUpdatePictureByIdMutation,
 } from "../../features/masterpiece/masterpieceSlice";
@@ -48,6 +49,7 @@ const UpdateMasterpiece = ({ data, genre }) => {
   const [updateMusic, { isLoading: ldMusic }] = useUpdateMusicByIdMutation();
   const [updatePicture, { isLoading: ldPicture }] =
     useUpdatePictureByIdMutation();
+  const [updateMovie, { isLoading: ldMovie }] = useUpdateMovieByIdMutation();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -112,9 +114,9 @@ const UpdateMasterpiece = ({ data, genre }) => {
         ? await updateMusic(reqBody)
         : genre === genres.PICTURE
         ? await updatePicture(reqBody)
+        : genre === genres.MOVIE
+        ? await updateMovie(reqBody)
         : null;
-
-    console.log(resp);
 
     if (resp?.error) {
       setError(resp?.error?.data?.message);
@@ -126,7 +128,7 @@ const UpdateMasterpiece = ({ data, genre }) => {
   return (
     <>
       <IconButton onClick={handleClickOpen}>
-        <MdUpdate />
+        <MdOutlineEdit />
       </IconButton>
       <Dialog open={open} onClose={handleClose} maxWidth="lg">
         <DialogTitle
@@ -223,7 +225,10 @@ const UpdateMasterpiece = ({ data, genre }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>İptal Et</Button>
-          <Button onClick={submitHandler} disabled={ldMusic || ldPicture}>
+          <Button
+            onClick={submitHandler}
+            disabled={ldMusic || ldPicture || ldMovie}
+          >
             Gönder
           </Button>
         </DialogActions>

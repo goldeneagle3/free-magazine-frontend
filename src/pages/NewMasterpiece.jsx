@@ -4,7 +4,7 @@ import { MenuItem, TextField } from "@mui/material";
 import NewMasterpieceComp from "../components/masterpiece/NewMasterpieceComp";
 
 const NewMasterpiece = () => {
-  const genres = ["music", "picture"];
+  const genres = ["music", "picture", "movie"];
 
   const [genre, setGenre] = useState("");
 

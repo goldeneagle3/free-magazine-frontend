@@ -118,6 +118,11 @@ const ContactFormComp = () => {
           text={text}
           status={isError ? "error" : isSuccess ? "success" : "info"}
         />
+        {isLoading && (
+          <h4 className="list-header">
+            Mesajınız gönderiliyor , lütfen bekleyin.
+          </h4>
+        )}
       </Stack>
     </form>
   );

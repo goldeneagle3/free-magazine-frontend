@@ -77,12 +77,20 @@ export default function NewPostComp() {
     e.preventDefault();
 
     if (category === "" || subCategory === "") {
+      setError("Lütfen bir kategori ve ona ait bir alt kategori seçiniz.");
+      setOpen(true);
       return;
     }
 
-    if (titleHasError) return;
+    if (titleHasError) {
+      setError("En fazla 75 karakter içeren bir başlık giriniz.");
+      setOpen(true);
+      return;
+    }
 
     if (!validateContentLength(content)) {
+      setError("En az 250 karakter içeren bir içerik giriniz.");
+      setOpen(true);
       return;
     }
 
